@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Screen Name:
+  = @post.screen_name
+%p
+  %b Subject:
+  = @post.subject
+%p
+  %b Post text:
+  = @post.post_text
+
+= link_to 'Edit', edit_post_path(@post)
+\|
+= link_to 'Back', posts_path

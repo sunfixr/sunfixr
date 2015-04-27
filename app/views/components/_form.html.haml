@@ -1,0 +1,22 @@
+= form_for @component do |f|
+  - if @component.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@component.errors.count, "error")} prohibited this component from being saved:"
+      %ul
+        - @component.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :company_id
+    = f.text_field :company_id
+  .field
+    = f.label :part_number
+    = f.text_field :part_number
+  .field
+    = f.label :serial_number
+    = f.text_field :serial_number
+  .actions
+    = f.submit 'Save'

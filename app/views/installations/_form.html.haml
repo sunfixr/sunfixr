@@ -1,0 +1,22 @@
+= form_for @installation do |f|
+  - if @installation.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@installation.errors.count, "error")} prohibited this installation from being saved:"
+      %ul
+        - @installation.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :slug
+    = f.text_field :slug
+  .field
+    =f.fields_for :address do |a|
+      =render :partial => 'addresses/address_fields', locals: {f: a}
+  .field
+    = f.label :company
+    = f.collection_select  :company_id, Company.all, :id, :name
+  .actions
+    = f.submit 'Save'

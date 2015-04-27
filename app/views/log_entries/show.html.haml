@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @log_entry.user
+%p
+  %b Component:
+  = @log_entry.component_id
+%p
+  %b Comments:
+  = @log_entry.comments
+
+= link_to 'Edit', edit_log_entry_path(@log_entry)
+\|
+= link_to 'Back', log_entries_path

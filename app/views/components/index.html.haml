@@ -1,0 +1,27 @@
+%h1 Listing components
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Company
+      %th Part number
+      %th Serial number
+      %th
+      %th
+      %th
+      
+  %tbody
+    - @components.each do |component|
+      %tr
+        %td= component.name
+        %td= component.company_id
+        %td= component.part_number
+        %td= component.serial_number
+        %td= link_to 'Show', component
+        %td= link_to 'Edit', edit_component_path(component)
+        %td= link_to 'Destroy', component, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Component', new_component_path

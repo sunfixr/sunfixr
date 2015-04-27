@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @installation.name
+%p
+  %b Slug:
+  = @installation.slug
+
+= link_to 'Edit', edit_installation_path(@installation)
+\|
+= link_to 'Back', installations_path
