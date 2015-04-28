@@ -19,7 +19,13 @@ Rails.application.routes.draw do
   get '/angular' => 'angular#index', as: :angular_index
 #  get '/angular/:action' => 'angular', as: :angular
 
+  get 'projects' => 'project#index', as: 'projects'
+  get 'project/:name' => 'project#home', as: 'project_home'
+  get 'project', to: redirect('/projects'), as: 'project'
 
+  get 'forum' => 'forum#index'
+  get 'training' => 'training#index', as: 'training'
+  get 'manuals' => 'manuals#index', as: 'manuals'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
