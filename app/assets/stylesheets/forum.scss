@@ -1,0 +1,62 @@
+.headline{
+  font-size: 25px;
+}
+.box{
+  border: 1px black solid;
+  border-radius: 10px;
+  background-color: #EEEEEE;
+  padding: 5px 0;
+  width: 800px;
+  height: 115px;
+  margin-top: 15px;
+  box-shadow: rgb(153, 153, 153) 0px 1px 2px 0px;
+  position: relative;
+}
+
+.question{
+  display: inline-block;
+  position: absolute;
+  margin-left: 67px !important;
+  margin-top: 20px !important;
+
+}
+
+.tallies{
+  left: 15px;
+  // text-align: center;
+  display: inline-block;
+  position: absolute;
+}
+
+.votes{
+  left: 30px;
+}
+
+.answers{
+  left: 30px;
+  margin-top:-10px;
+}
+
+.num_votes{
+  margin-left: 10px !important;
+  text-align: center;
+}
+
+.title{
+  font-size: 8px;
+  text-align: center;
+  display: inline-block;
+  position: absolute;
+}
+.labels_box {
+  position: absolute;
+  top: 81px;
+  left: 66px;
+}
+.positioning_div {
+  position: relative;
+}
+
+.label {
+  border-radius: 5px;
+}

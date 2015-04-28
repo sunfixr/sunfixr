@@ -1,0 +1,144 @@
+<div class="row container">
+  <div class="small-8 columns left">
+    <h3 class="matt">Project Ditunga</h3><h5 class="matt">Ngandajika, Kasayi Province, Democratic Republic of Congo</h5>
+    <div class="row photos">
+      <div class="small-4 columns photo">
+        <%=image_tag("project-img-1.png")%>
+      </div>
+      <div class="small-4 columns photo">
+        <%=image_tag("project-img-2.png")%>
+      </div>
+      <div class="small-4 columns photo">
+        <%=image_tag("project-img-3.png")%>
+      </div>
+    </div>
+      <div class="row">
+        <div class="small-12 columns description">
+          <hr>
+        <h4>Installation Description</h4>
+        <p>
+          <div class='matt'><b>2.4 KW Solar System</b></div>
+          <div class='matt'><b>Year installed:</b> 2006</div>
+          <div class='matt'><b>Company:</b> Bornay</div>
+          <div class='matt'><b>Parts:</b></div>
+          <div class='matt'>
+Victron Energy Converter 3KV (5 years / 10 years)</div>
+<div class='matt'>
+24V v 1200 AH Battery System (Lifetime 15-20 years)</div>
+<div class='matt'>
+10 260 Watt Renesola PV Modules (20 year linear degradation)</div>
+        </p>
+      </div>
+    </div>
+      <div class="row">
+        <div class="small-12 columns">
+          <hr>
+        <h4>Maintenance Log</h4>
+          <a href="#">12/15/15, Inverter</a>
+          <div class="matt">No power from the system.
+          </div>
+          <div class="matt">
+            <b>Unresolved:</b> I think it's the inverter, it doesn't show any information, buttons not changing anything when pressed.
+          </div>
+          <br>
+          <a href="#">6/15/2011, Battery</a>
+          <div class="matt">No electricity at night.</div>
+          <div class="matt">
+          <b>Resolved:</b> Disconnected batteries, ordered new batteries from <a href="#">www.solarparts.com</a>.</p>
+        </div>
+          <a href="#">5/8/2010, Panels</a>
+          <div class="matt">
+          Dirty solar panel.</div>
+          <div class="matt">
+            <b>Resolved:</b> Cleaned panels with a cloth. See <a href="#">video</a>.</p>
+          </div>
+      <a href="#">See full maintenance log for Project Ditunga.</a>
+    </div>
+      </div>
+  </div>
+
+  <div class="small-4 right columns">
+    <div class="row">
+      <div class="small-12 map-image columns">
+      <!-- <h3>Map</h3> -->
+        <%=image_tag("google-map-img-2.png")%><!--<img src="<%= %>" alt="Google Map" style="width:304px;height:228px;">-->
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-12 columns">
+        <a href="<%=manuals_path(name: params[:name])%>" class="button expand">Manuals</a>
+        <a href="<%=forum_path(name: params[:name])%>" class="button expand">Contact an expert</a>
+      </div>
+    </div>
+    <div class="row forum">
+      <div class="small-12 columns">
+      <h4>Latest Forum Posts</h4>
+      <p><a href="#">How often do I need to clean the panels?</a><br>
+      Clean the panels whenever they are about 50% covered.</p>
+      <p><a href="#">Where do I get new parts for this battery? How long does the battery last? How do I know when I can't fix it anymore?</a><br>
+      The link to the provider of the equipment is included on the website for your project: <a href="#">Project Utunga.</a></p>
+      <p><a href="#">How do I know the inverter is broken? Can I open the inverter? Is it dangerous to touch the inside of the inverter? How do I get a new inverter?</a><br>
+      With your specific inverter if you flip the diconnect switch and hold it for 30 seconds the system should reboot. If not it needs maintenance or replacement.</p>
+    </div>
+    </div>
+
+  </div>
+</div>
+
+<style>
+
+  .container {
+    padding-top: 20px;
+  }
+
+  .left {
+    height: 200px;
+    display: inline-block;
+    padding-right: 40px;
+  }
+  .right {
+    height: 200px;
+    display: inline-block;
+  }
+  .photo {
+    float: left;
+    height: 200px;
+  }
+
+  .photos {
+    /*padding-bottom: 10px;*/
+    /*width: 195px;*/
+    /*clear: both;*/
+  }
+  .map-image {
+    margin-bottom: 20px;
+    /*height: 200px;*/
+    /*clear: both;*/
+  }
+
+.description {
+  margin-bottom: -20px;
+  margin-top: -5px;
+}
+
+p {
+  line-height: 120%;
+}
+
+h3 {
+  line-height: 120%;
+}
+
+h5 {
+  line-height: 120%;
+}
+
+
+hr {
+  margin: 7px;
+}
+
+.matt{
+  margin-top: -3px !important;
+}
+</style>

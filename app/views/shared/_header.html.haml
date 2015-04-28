@@ -1,0 +1,35 @@
+.row
+  .large-12.columns
+    .row
+      .large-12.columns
+        %nav.top-bar{role: 'navigation', 'data-topbar'=>'', 'data-options'=>"is_hover: false"}
+          %ul.title-area
+            / Title Area
+            %li.name
+              %h1
+                %a{:href => projects_path}
+                  =image_tag "sunfixr-logo.png"
+            %li.toggle-topbar.menu-icon
+              %a{:href => "#"}
+                %span menu
+          %section.top-bar-section
+            / Right Nav Section
+            %ul.right
+              %li.divider
+              %li
+                =link_to('Training', training_path(name: params[:name] || ''))
+              %li
+                =link_to('Manuals', manuals_path(name: params[:name] || ''))
+              %li
+                =link_to('Forum', forum_path(name: params[:name] || ''))
+
+        / End Top Bar
+      / End Navigation
+    -if notice
+      .alert-box.success
+        =notice
+    -if alert
+      .alert-box.alert
+        =alert
+.row
+  .small-12.columns
