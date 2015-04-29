@@ -15,7 +15,7 @@
   = f.text_field :postal_code
 .field
   = f.label :country_id
-  = f.text_field :country_id
+  = country_select(f.object_name.to_s,"country_id",selected: f.object.country_id.to_s)
 .field
   = f.label :latitude
   = f.text_field :latitude

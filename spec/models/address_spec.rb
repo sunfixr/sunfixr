@@ -17,4 +17,9 @@ RSpec.describe Address, :type => :model do
     before{address.name=''}
     it{should_not be_valid}
   end
+
+  it "should return the country name" do
+    expect(address.country_name).to eq "Congo, The Democratic Republic Of The"
+  end
+
 end

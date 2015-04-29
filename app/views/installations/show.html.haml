@@ -6,6 +6,13 @@
 %p
   %b Slug:
   = @installation.slug
+%p
+  %b Description:
+  = @installation.description
+%p
+  %b Install Date:
+  = @installation.install_date.to_s
+=render partial: 'addresses/show_address', locals: {address: @installation.address}
 
 = link_to 'Edit', edit_installation_path(@installation)
 \|

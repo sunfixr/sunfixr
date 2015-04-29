@@ -1,6 +1,6 @@
 <div class="row container">
   <div class="small-8 columns left">
-    <h3 class="matt">Project Ditunga</h3><h5 class="matt">Ngandajika, Kasayi Province, Democratic Republic of Congo</h5>
+    <h3 class="matt"><%=@installation.name%></h3><h5 class="matt"><%=@installation.address.city%>, <%=@installation.address.state%>, <%=@installation.address.country_name%></h5>
     <div class="row photos">
       <div class="small-4 columns photo">
         <%=image_tag("project-img-1.png")%>
@@ -17,9 +17,9 @@
           <hr>
         <h4>Installation Description</h4>
         <p>
-          <div class='matt'><b>2.4 KW Solar System</b></div>
-          <div class='matt'><b>Year installed:</b> 2006</div>
-          <div class='matt'><b>Company:</b> Bornay</div>
+          <div class='matt'><b><%=@installation.description%></b></div>
+          <div class='matt'><b>Year installed:</b> <%=@installation.install_date.to_s%></div>
+          <div class='matt'><b>Company:</b> <%=@installation.company.name%></div>
           <div class='matt'><b>Parts:</b></div>
           <div class='matt'>
 Victron Energy Converter 3KV (5 years / 10 years)</div>
@@ -34,6 +34,7 @@ Victron Energy Converter 3KV (5 years / 10 years)</div>
         <div class="small-12 columns">
           <hr>
         <h4>Maintenance Log</h4>
+
           <a href="#">12/15/15, Inverter</a>
           <div class="matt">No power from the system.
           </div>
@@ -41,11 +42,14 @@ Victron Energy Converter 3KV (5 years / 10 years)</div>
             <b>Unresolved:</b> I think it's the inverter, it doesn't show any information, buttons not changing anything when pressed.
           </div>
           <br>
+
           <a href="#">6/15/2011, Battery</a>
           <div class="matt">No electricity at night.</div>
           <div class="matt">
-          <b>Resolved:</b> Disconnected batteries, ordered new batteries from <a href="#">www.solarparts.com</a>.</p>
-        </div>
+            <b>Resolved:</b> Disconnected batteries, ordered new batteries from <a href="#">www.solarparts.com</a>.</p>
+          </div>
+          <br>
+
           <a href="#">5/8/2010, Panels</a>
           <div class="matt">
           Dirty solar panel.</div>

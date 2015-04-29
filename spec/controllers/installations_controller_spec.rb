@@ -27,6 +27,8 @@ RSpec.describe InstallationsController, :type => :controller do
     {
         name: 'MyName',
         slug: 'myname',
+        install_date: Faker::Date.backward(14),
+        description: Faker::Lorem.sentence,
         address_attributes: {address1: 'some address', city: 'some city'}
     }
   }
@@ -110,6 +112,8 @@ RSpec.describe InstallationsController, :type => :controller do
         {
             name: 'NewName',
             slug: 'newname',
+            install_date: Date.today,
+            description: 'Fake description',
             address_attributes: {address1: 'some new address'}
         }
       }
@@ -120,6 +124,8 @@ RSpec.describe InstallationsController, :type => :controller do
         installation.reload
         expect(installation.name).to eq 'NewName'
         expect(installation.slug).to eq 'newname'
+        expect(installation.description).to eq 'Fake description'
+        expect(installation.install_date).to eq Date.today
         expect(installation.address.address1).to eq('some new address')
         expect(installation.address.city).to be_nil
       end

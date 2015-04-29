@@ -3,8 +3,10 @@ ENV["RAILS_ENV"] ||= 'test'
 require 'spec_helper'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
+require 'rspec/mocks'
 require 'factory_girl_rails'
 require 'faker'
+require 'capybara/rspec'
 #FactoryGirl.find_definitions
 # Add additional requires below this line. Rails is not loaded until this point!
 

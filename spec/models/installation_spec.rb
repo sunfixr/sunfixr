@@ -12,7 +12,13 @@ RSpec.describe Installation, :type => :model do
 
   describe "when slug is not present" do
     before {installation.slug = ' '}
-    it {should_not be_valid}
+    it "should be valid" do
+      expect(installation).to be_valid
+    end
+    it "should use the name field to make the slug" do
+      installation.validate
+      expect(installation.slug).to eq "foo-1"
+    end
   end
 
   describe 'when slug is taken' do
@@ -48,18 +54,6 @@ RSpec.describe Installation, :type => :model do
 
   end
 
-=begin
-  describe 'company' do
-    before{installation.company = FactoryGirl.build(:company, name: 'Some Company') }
-    it{should respond_to(:company)}
-    it "should have a company name" do
-      expect(installation.company.name).to eq 'Some Company'
-    end
-    it "should save the company" do
-      expect(Company.find(installation.company.id).name).to eq 'Some Company'
-    end
-  end
-=end
   describe 'company' do
     it{should respond_to :company}
     it "should have a company name" do
@@ -104,5 +98,20 @@ RSpec.describe Installation, :type => :model do
     it "should have the last post from 'Buck'" do
       expect(installation.posts[1].screen_name).to eq 'Buck'
     end
+  end
+
+  describe "When install_date" do
+    it "is blank" do
+      installation.install_date = nil
+      expect(installation).to_not be_valid
+    end
+  end
+
+  describe "When description" do
+    it "is blank" do
+      installation.description = ''
+      expect(installation).to_not be_valid
+    end
+
   end
 end

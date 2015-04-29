@@ -8,12 +8,9 @@
       %h2
         Maintain and Sustain Rural Microgrids
       %ul
-        %li
-          =link_to('Ditunga','project/Ditunga')
-        %li
-          =link_to('Solarville','project/SolarVille')
-        %li
-          =link_to('MyVillage','project/MyVillage')
+        -@installations.each do |installation|
+          %li
+            =link_to(installation.name,"project/#{installation.slug}")
   .row
     .small-12.columns
       #{image_tag('header.jpg')}
@@ -40,5 +37,6 @@
 
   ul li {
     list-style-type: none;
-    font-size: 1.5em
+    font-size: 1.5em;
+    line-height: 130%
   }

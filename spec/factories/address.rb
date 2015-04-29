@@ -8,8 +8,7 @@ FactoryGirl.define do
     f.postal_code "90210"
     f.latitude 34.101001
     f.longitude -118.343301
-
-
+    f.country_id "CD"
   end
 
 end

@@ -2,10 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "installations/edit", :type => :view do
   before(:each) do
-    @installation = assign(:installation, Installation.create!(
-      :name => "MyString",
-      :slug => "MyString"
-    ))
+    @installation = assign(:installation, create(:installation))
   end
 
   it "renders the edit installation form" do

@@ -1,6 +1,8 @@
 class Installation < ActiveRecord::Base
   validates :name, presence: true
   validates :slug, presence: true, uniqueness: { case_sensitive: false }
+  validates :install_date, presence: true
+  validates :description, presence: true
   has_one :address, as: :addressable
   has_one :companies_installations
   has_one :company, through: :companies_installations
@@ -12,7 +14,7 @@ class Installation < ActiveRecord::Base
   accepts_nested_attributes_for :company
   accepts_nested_attributes_for :address
 
-  before_validation :set_address_name
+  before_validation :set_address_name, :slugify
 
 
   def company_id
@@ -26,5 +28,9 @@ class Installation < ActiveRecord::Base
   protected
   def set_address_name
     address.name = name if address && address.name.blank?
+  end
+
+  def slugify
+    self.slug = (self.slug && self.slug.to_url).blank? ? (self.name && self.name.to_url)  : self.slug.to_url
   end
 end
