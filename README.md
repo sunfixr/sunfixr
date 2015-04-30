@@ -1,7 +1,7 @@
 # sunfixr
 ### Making the world a better place by helping to maintain, and sustain rural solar micro grids.
 
-![sunfixr image](/Solar-Advocates/sunfixr/master/app/assets/images/sunfixr.jpg)
+![sunfixr image](http://raw.github.com/Solar-Advocates/sunfixr/master/app/assets/images/sunfixr.jpg)
 
 Hundreds of rural microgrids have been installed in the last decade.  Installers come in and do a great job installing 
 the grid for small remote rural villages, and then ... leave. Sunfixr is a project to educate and empower a local corps of 
