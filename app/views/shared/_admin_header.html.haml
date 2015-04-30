@@ -13,7 +13,7 @@
               %a{:href => "#"}
                 %span menu
           %section.top-bar-section
-            /left nav section
+            / Right Nav Section
             %ul.left
               %li.divider
               %li
@@ -25,23 +25,13 @@
                     =link_to('Projects', installations_path)
                   %li
                     =link_to('Companies', companies_path)
-            / Right Nav Section
-            %ul.right
-              %li.divider
-              %li
-                =link_to('Training', training_path(name: params[:name] || ''))
-              %li
-                =link_to('Manuals', manuals_path(name: params[:name] || ''))
-              %li
-                =link_to('Forum', forum_path(name: params[:name] || ''))
-
-        / End Top Bar
-      / End Navigation
-    -if notice
-      .alert-box.success
-        =notice
-    -if alert
-      .alert-box.alert
-        =alert
-.row
-  .small-12.columns
+          / End Top Bar
+          / End Navigation
+-if notice
+  .alert-box.success
+    =notice
+-if alert
+  .alert-box.alert
+    =alert
+  .row
+    .small-12.columns

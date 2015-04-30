@@ -10,6 +10,7 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
+    =render partial: 'shared/admin_header'
     .row
-      .small-11.small-centered.columns
+      .small-12.small-centered.columns
         = yield
