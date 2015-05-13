@@ -21,12 +21,13 @@
           <div class='matt'><b>Year installed:</b> <%=@installation.install_date.to_s%></div>
           <div class='matt'><b>Company:</b> <%=@installation.company.name%></div>
           <div class='matt'><b>Parts:</b></div>
+          <% @installation.components.each do |component| %>
+            <div class='matt'><%=component.name %></div>
+          <%end%>
           <div class='matt'>
-Victron Energy Converter 3KV (5 years / 10 years)</div>
-<div class='matt'>
-24V v 1200 AH Battery System (Lifetime 15-20 years)</div>
-<div class='matt'>
-10 260 Watt Renesola PV Modules (20 year linear degradation)</div>
+            24V v 1200 AH Battery System (Lifetime 15-20 years)</div>
+          <div class='matt'>
+            10 260 Watt Renesola PV Modules (20 year linear degradation)</div>
         </p>
       </div>
     </div>
@@ -34,7 +35,6 @@ Victron Energy Converter 3KV (5 years / 10 years)</div>
         <div class="small-12 columns">
           <hr>
         <h4>Maintenance Log</h4>
-
           <a href="#">12/15/15, Inverter</a>
           <div class="matt">No power from the system.
           </div>

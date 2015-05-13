@@ -4,12 +4,19 @@ FactoryGirl.define do
     f.slug {Faker::Internet.slug}
     f.description{Faker::Lorem.sentence}
     f.install_date{Faker::Date.backward(14)}
-    f.association :address, factory: :address
-    f.posts {|c| [c.association(:post)]}
-    before(:create) do |installation|
-      installation.company = create(:company)
-      installation.components << create(:component)
+
+    trait :with_address do
+      f.association :address, factory: :address
     end
+
+    trait :with_company do
+      after(:create){|installation| installation.company = create(:company)}
+    end
+
+    trait :with_components do
+      after(:create){|installation| installation.components = create_pair(:component)}
+    end
+
   end
 
 

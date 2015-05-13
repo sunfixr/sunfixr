@@ -32,7 +32,7 @@ RSpec.describe "addresses/edit", :type => :view do
 
       assert_select "input#address_postal_code[name=?]", "address[postal_code]"
 
-      assert_select "input#address_country_id[name=?]", "address[country_id]"
+      assert_select "select#address_country_id[name=?]", "address[country_id]"
 
       assert_select "input#address_latitude[name=?]", "address[latitude]"
 

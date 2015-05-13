@@ -6,17 +6,6 @@
         - @component.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :company_id
-    = f.text_field :company_id
-  .field
-    = f.label :part_number
-    = f.text_field :part_number
-  .field
-    = f.label :serial_number
-    = f.text_field :serial_number
+  =render partial: 'components/fields', locals: {f: f}
   .actions
     = f.submit 'Save'

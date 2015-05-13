@@ -18,7 +18,7 @@ RSpec.describe "components/new", :type => :view do
 
       assert_select "input#component_name[name=?]", "component[name]"
 
-      assert_select "input#component_company_id[name=?]", "component[company_id]"
+      assert_select "select#component_company_id[name=?]", "component[company_id]"
 
       assert_select "input#component_part_number[name=?]", "component[part_number]"
 

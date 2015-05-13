@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Installation, :type => :model do
-  subject(:installation) {FactoryGirl.create(:installation, name:'Foo 1', slug: 'foo')}
+  subject(:installation) {FactoryGirl.create(:installation, :with_company, :with_components, :with_address, name:'Foo 1', slug: 'foo')}
   it {should respond_to(:name)}
   it {should be_valid}
 
@@ -68,10 +68,10 @@ RSpec.describe Installation, :type => :model do
     before{installation.components << build(:component, name: 'Special Inverter', component_type: create(:component_type, name: 'Inverter'))}
     it{should respond_to :components}
     it "should have a non zero count" do
-      expect(installation.components.count).to eq 2
+      expect(installation.components.count).to eq 3
     end
     it "should save the new component" do
-      expect(Component.find(installation.components[1].id)).to eq installation.components[1]
+      expect(Component.find(installation.components[2].id)).to eq installation.components[2]
     end
   end
 
@@ -86,20 +86,6 @@ RSpec.describe Installation, :type => :model do
     end
   end
 
-  describe "posts" do
-    before{installation.posts << build(:post,screen_name: 'Buck', subject: 'Question about installation.', post_text: 'What is this big flat thing?')}
-    it{should respond_to :posts}
-    it "should have a count of 2" do
-      expect(installation.posts.count).to eq 2
-    end
-    it "should save the new post" do
-      expect(Post.find(installation.posts[1].id)).to eq installation.posts[1]
-    end
-    it "should have the last post from 'Buck'" do
-      expect(installation.posts[1].screen_name).to eq 'Buck'
-    end
-  end
-
   describe "When install_date" do
     it "is blank" do
       installation.install_date = nil
@@ -111,6 +97,48 @@ RSpec.describe Installation, :type => :model do
     it "is blank" do
       installation.description = ''
       expect(installation).to_not be_valid
+    end
+
+  end
+
+  describe "When component_ids" do
+    let(:test_component) { create(:component) }
+
+    describe "are empty" do
+      it "should not raise and exception" do
+        expect { installation.component_ids = [] }.not_to raise_error
+      end
+
+      it "should not change the count" do
+        expect { installation.component_ids = [] }.to change(installation.components, :size).by(0)
+      end
+    end
+
+    describe "is a valid existing component" do
+
+      it "should change the component count by one." do
+        expect { installation.component_ids = [test_component.id] }.to change(installation.components, :size).by(1)
+      end
+      it "should change the component count by one. if given an valid integer id" do
+        expect { installation.component_ids = test_component.id }.to change(installation.components, :size).by(1)
+      end
+      it "should not add if existing" do
+        expect { installation.component_ids = [1000] }.to change(installation.components, :size).by(0)
+      end
+
+    end
+
+    describe "is an array of valid component ids" do
+      let(:test_components) { [create(:component).id,create(:component).id] }
+
+      it "should change the count by the array size if all are not linked yet" do
+        expect { installation.component_ids = test_components }.to change(installation.components, :size).by(2)
+      end
+
+      it "should change the count by only the number of ids not already linked" do
+        test_components << installation.components[0].id
+        expect { installation.component_ids = test_components }.to change(installation.components, :size).by(2)
+      end
     end
 
   end

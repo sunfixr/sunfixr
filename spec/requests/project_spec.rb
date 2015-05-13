@@ -7,6 +7,7 @@ RSpec.describe "Project", :type => :request do
   end
 
   it "should get an individual project" do
+    allow(Installation).to receive(:find_by_slug).and_return(create(:installation,:with_address,:with_company))
     get project_home_path(name: 'ditunga')
     expect(response).to have_http_status(200)
   end

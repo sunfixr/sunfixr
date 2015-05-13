@@ -1,5 +1,5 @@
 (function() {
-    this.sunfixr = angular.module('sunfixr', ['ngRoute']);
+  /*  this.sunfixr = angular.module('sunfixr', ['ngRoute']);
     this.sunfixr.config([
         '$routeProvider', function($routeProvider) {
         return $routeProvider.when('/installations', {
@@ -10,7 +10,7 @@
             controller: 'HomeCtrl'
             });
         }
-    ]);
+    ]);*/
 }).call(this);
 
 

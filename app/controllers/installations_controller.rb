@@ -73,9 +73,10 @@ class InstallationsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def installation_params
       params.require(:installation).permit(
-          :name, :slug, :company_id, :description, :install_date,
+          :name, :slug, :company_id, :description, :install_date, :component_ids => [],
+          :component_attributes => [:id,:name,:description,:company_id,:serial_number,:part_number],
           :company_attributes => [:id,:name],
-          :address_attributes => [:id,:addressable_id,:addressable_type,:name,:address1,:address2,:city,:state,:postal_code,:country_id,:latitude,:longitude],
+          :address_attributes => [:id,:addressable_id,:addressable_type,:name,:address1,:address2,:city,:state,:postal_code,:country_id,:latitude,:longitude]
       )
     end
 end
