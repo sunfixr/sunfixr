@@ -1,0 +1,31 @@
+#project-index {
+
+  h2 {
+    color: white;
+  }
+
+  a:link {
+    color: white;
+  }
+
+  a:visited {
+    color: white;
+  }
+
+  a:active {
+    color: white;
+  }
+
+  ul li {
+    list-style-type: none;
+    font-size: 1.5em;
+    line-height: 130%
+  }
+
+  background-image: url("#{image_path("header.jpg")}") ;
+  color: white;
+}
+
+#project-home {
+  //Stef you can add css here for the home page
+}

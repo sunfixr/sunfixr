@@ -9,29 +9,4 @@
       -@installations.each do |installation|
         %li
           =link_to(installation.name,"project/#{installation.slug}")
-:css
-  #project{
-    background-image: url("#{image_path("header.jpg")}") ;
-    color: white;
-  }
-  #project h2{
-    color: white;
-  }
 
-  #project a:link{
-    color: white;
-  }
-
-  #project a:visited{
-    color: white;
-  }
-
-  #project a:active{
-    color: white;
-  }
-
-  #project ul li {
-    list-style-type: none;
-    font-size: 1.5em;
-    line-height: 130%
-  }

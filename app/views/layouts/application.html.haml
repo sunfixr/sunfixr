@@ -11,8 +11,8 @@
     = csrf_meta_tags
   %body
     #top-nav-bar.container
-      =render partial: 'shared/admin_header'
-    %div.container{:id=>params[:controller]}
+      =render partial: 'shared/header'
+    %div.container{:id=>params[:controller] + '-' + params[:action]}
       .row
         .col-xs-12
           = yield
