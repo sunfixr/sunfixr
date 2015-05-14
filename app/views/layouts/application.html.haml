@@ -1,17 +1,19 @@
 !!!
 %html{:lang => "en"}
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{:charset => "utf-8"}/
+    %meta{:content => "IE=edge",  "http-equiv" =>"X-UA-Compatible" }/
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+
     %title= content_for?(:title) ? yield(:title) : "Sunfixr"
-    =stylesheet_link_tag('application',media: 'all', 'data-turbolinks-track' => true)
-    =javascript_include_tag('application', 'data-turbolinks-track' => true)
-    =javascript_include_tag("vendor/modernizr")
+    = stylesheet_link_tag('application', media: 'all')
+    = javascript_include_tag('application')
     = csrf_meta_tags
   %body
-    =render partial: 'shared/header'
-    .row
-      .small-12.small-centered.columns
-        =yield
+    #top-nav-bar.container
+      =render partial: 'shared/admin_header'
+    %div.container{:id=>params[:controller]}
+      .row
+        .col-xs-12
+          = yield
 

@@ -1,41 +1,36 @@
-#homepage
-
-  .row
-    .small-12.columns
-      &nbsp;
-  .row
-    .small-11.columns.small-centered
-      %h2
-        Our example rural micro grid projects:
-      %ul
-        -@installations.each do |installation|
-          %li
-            =link_to(installation.name,"project/#{installation.slug}")
-  .row
-    .small-12.columns
-      #{image_tag('header.jpg')}
+.row
+  .col-xs-12
+    &nbsp;
+.row
+  .col-xs-12
+    %h2
+      Our example rural micro grid projects:
+    %ul
+      -@installations.each do |installation|
+        %li
+          =link_to(installation.name,"project/#{installation.slug}")
 :css
-  #homepage{
+  #project{
     background-image: url("#{image_path("header.jpg")}") ;
     color: white;
   }
-  #homepage h2{
+  #project h2{
     color: white;
   }
 
-  #homepage a:link{
+  #project a:link{
     color: white;
   }
 
-  #homepage a:visited{
+  #project a:visited{
     color: white;
   }
 
-  #homepage a:active{
+  #project a:active{
     color: white;
   }
 
-  ul li {
+  #project ul li {
     list-style-type: none;
     font-size: 1.5em;
     line-height: 130%

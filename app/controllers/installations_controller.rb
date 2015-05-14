@@ -1,6 +1,5 @@
 class InstallationsController < ApplicationController
   before_action :set_installation, only: [:show, :edit, :update, :destroy]
-  layout 'admin'
   # GET /installations
   # GET /installations.json
   def index

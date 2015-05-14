@@ -4,7 +4,6 @@ class ProjectController < ApplicationController
   end
   def index
     @installations = Installation.all
-    render 'index', layout: 'admin'
   end
 
 end
