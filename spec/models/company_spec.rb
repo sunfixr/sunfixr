@@ -23,18 +23,18 @@ RSpec.describe Company, :type => :model do
       expect(Address.find(company.address.id).address1).to eq '2323 Bogus ln'
     end
 
-    it "should save the address relationship to the installation" do
+    it "should save the address relationship to the project" do
       company2 = Company.find(company.id)
       expect(company2.address).to eq company.address
     end
 
-    it "should populate the address.name with the installation name if blank" do
+    it "should populate the address.name with the project name if blank" do
       company2 = Company.create({name: 'Company Name', address_attributes: {name: '',address1: 'some street'}})
       expect(company2.address.name).to eq 'Company Name'
     end
 
     it "should not change the address.name if set" do
-      company2 = Installation.create({name: 'Company Name', address_attributes: {name: 'bla',address1: 'some street'}})
+      company2 = Project.create({name: 'Company Name', address_attributes: {name: 'bla',address1: 'some street'}})
       expect(company2.address.name).to eq 'bla'
     end
 

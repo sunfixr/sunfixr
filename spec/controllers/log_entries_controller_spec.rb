@@ -23,9 +23,9 @@ RSpec.describe LogEntriesController, :type => :controller do
   # This should return the minimal set of attributes required to create a valid
   # LogEntry. As you add validations to LogEntry, be sure to
   # adjust the attributes here as well.
-  let(:installation){FactoryGirl.create(:installation)}
+  let(:project){FactoryGirl.create(:project)}
   let(:valid_attributes) {
-    {user: 'Joe', comments: 'Some comments', installation_id: installation.id}
+    {user: 'Joe', comments: 'Some comments', project_id: project.id}
   }
 
   let(:invalid_attributes) {
@@ -103,9 +103,9 @@ RSpec.describe LogEntriesController, :type => :controller do
 
   describe "PUT update" do
     describe "with valid params" do
-      let(:new_installation){FactoryGirl.create(:installation,name: 'new install', slug: 'newslug')}
+      let(:new_installation){FactoryGirl.create(:project,name: 'new install', slug: 'newslug')}
       let(:new_attributes) {
-        {user: 'Bob', comments: 'Some new comments', installation_id: new_installation.id}
+        {user: 'Bob', comments: 'Some new comments', project_id: new_installation.id}
       }
 
       it "updates the requested log_entry" do
@@ -114,7 +114,7 @@ RSpec.describe LogEntriesController, :type => :controller do
         log_entry.reload
         expect(log_entry.user).to eq 'Bob'
         expect(log_entry.comments).to eq 'Some new comments'
-        expect(log_entry.installation).to eq new_installation
+        expect(log_entry.project).to eq new_installation
       end
 
       it "assigns the requested log_entry as @log_entry" do

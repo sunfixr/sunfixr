@@ -3,8 +3,8 @@ class Component < ActiveRecord::Base
   belongs_to :company
   belongs_to :component_type
   has_many :log_entries
-  has_many :components_installation, inverse_of: :component
-  has_many :installations, through: :components_installation
+  has_many :components_projects, inverse_of: :component
+  has_many :projects, through: :components_installation
 
 
 

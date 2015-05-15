@@ -10,11 +10,9 @@
   #navbar.collapse.navbar-collapse
     %ul.nav.navbar-nav
       %li.active
-        =link_to('Projects', project_path)
+        =link_to('Projects', projects_path)
       %li
-        =link_to('Edit Projects', installations_path)
-      %li
-        =link_to('Edit Companies', companies_path)
+        =link_to('admin', rails_admin_path)
 -if notice
   .alert-box.success
     =notice

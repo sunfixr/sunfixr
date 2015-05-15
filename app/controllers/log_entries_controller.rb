@@ -69,6 +69,6 @@ class LogEntriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def log_entry_params
-      params.require(:log_entry).permit(:user, :installation_id, :component_id, :comments)
+      params.require(:log_entry).permit(:user, :project_id, :component_id, :comments)
     end
 end

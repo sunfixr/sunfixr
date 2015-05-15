@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Installation.create([
+Project.create([
                         {name: 'Ditjunga', slug: 'ditjunga'},
                         {name: 'Sunnyville', slug: 'sunnyville'},
                         {name: 'LaLaLand', slug: 'lalaland'}

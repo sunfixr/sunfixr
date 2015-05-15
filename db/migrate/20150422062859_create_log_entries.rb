@@ -1,7 +1,7 @@
 class CreateLogEntries < ActiveRecord::Migration
   def change
     create_table :log_entries do |t|
-      t.integer :installation_id, null: false
+      t.integer :project_id, null: false
       t.string :component_id
       t.string :user
       t.text :comments

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :addresses
 
@@ -10,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :companies
 
-  resources :installations
+  resources :projects
 
   root 'home#index', as: :root
 
@@ -20,9 +21,9 @@ Rails.application.routes.draw do
   get '/angular' => 'angular#index', as: :angular_index
 #  get '/angular/:action' => 'angular', as: :angular
 
-  get 'projects' => 'project#index', as: 'projects'
+ # get 'projects' => 'project#index', as: 'projects'
   get 'project/:name' => 'project#home', as: 'project_home'
-  get 'project', to: redirect('/projects'), as: 'project'
+ # get 'project', to: redirect('/projects'), as: 'project'
 
   get 'forum' => 'forum#index'
   get 'training' => 'training#index', as: 'training'

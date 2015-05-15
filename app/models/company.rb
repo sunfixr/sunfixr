@@ -1,8 +1,8 @@
 class Company < ActiveRecord::Base
   has_many :components
   has_one :address, as: :addressable
-  has_many :companies_installation
-  has_many :installations, through: :companies_installation
+  has_many :companies_project
+  has_many :projects, through: :companies_project
   validates :name, presence: true
 
   accepts_nested_attributes_for :address

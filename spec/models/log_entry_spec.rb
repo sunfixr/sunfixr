@@ -9,8 +9,8 @@ RSpec.describe LogEntry, :type => :model do
     before { log_entry.user = "" }
     it {should_not be_valid}
   end
-  describe "when installation is not present" do
-    before { log_entry.installation = nil }
+  describe "when project is not present" do
+    before { log_entry.project = nil }
     it {should_not be_valid}
   end
 

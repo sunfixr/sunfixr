@@ -4,6 +4,7 @@ class CreateComponents < ActiveRecord::Migration
       t.integer :component_type_id
       t.integer :company_id
       t.string :name
+      t.text   :description
       t.string :part_number
       t.string :serial_number
       t.text :comments

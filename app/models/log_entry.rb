@@ -1,7 +1,7 @@
 class LogEntry < ActiveRecord::Base
-  validates :installation, presence: true
+  validates :project, presence: true
   validates :user, presence: true
-  belongs_to :installation
+  belongs_to :project
   belongs_to :component
 
 
@@ -13,9 +13,9 @@ class LogEntry < ActiveRecord::Base
     self.component = Component.find(my_id.to_i) || self.component
   end
 
-  def installation_id
-    self.installation && self.installation.id
-  end
+ # def project_id
+ #   self.project && self.project.id
+ # end
 
   def company_id=(my_id)
     self.company = Company.find(my_id.to_i) || self.company
