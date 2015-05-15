@@ -1,6 +1,5 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :edit, :update, :destroy]
-  layout 'admin'
   # GET /companies
   # GET /companies.json
   def index

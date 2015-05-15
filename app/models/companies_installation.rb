@@ -1,6 +1,4 @@
-class CompaniesInstallations < ActiveRecord::Base
+class CompaniesInstallation < ActiveRecord::Base
   belongs_to :company
   belongs_to :installation
-
-
 end

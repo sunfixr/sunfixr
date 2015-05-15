@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 20150506163724) do
     t.string   "description"
   end
 
-  create_table "components_installations", id: false, force: :cascade do |t|
+  create_table "components_installations", force: :cascade do |t|
     t.integer "component_id",    null: false
     t.integer "installation_id", null: false
   end
