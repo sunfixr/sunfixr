@@ -1,7 +1,7 @@
 class Company < ActiveRecord::Base
   has_many :components
   has_one :address, as: :addressable
-  has_many :companies_project
+  has_many :companies_project, inverse_of: :company
   has_many :projects, through: :companies_project
   validates :name, presence: true
 
