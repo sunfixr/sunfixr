@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 #  get '/angular/:action' => 'angular', as: :angular
 
  # get 'projects' => 'project#index', as: 'projects'
-  get 'project/:name' => 'project#home', as: 'project_home'
+  get 'project/:name' => 'projects#home', as: 'project_home'
  # get 'project', to: redirect('/projects'), as: 'project'
 
   get 'forum' => 'forum#index'

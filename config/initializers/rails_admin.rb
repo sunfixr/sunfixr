@@ -54,6 +54,7 @@ RailsAdmin.config do |config|
     create do
       field :name
       field :slug
+      field :company
       field :description
       field :install_date
       field :address
@@ -61,6 +62,7 @@ RailsAdmin.config do |config|
     edit do
       field :name
       field :slug
+      field :company
       field :description
       field :install_date
       field :address
@@ -85,7 +87,7 @@ RailsAdmin.config do |config|
     config.model 'Component' do
       create do
         field :name
-        field :comnpany
+        field :company
         field :component_type
         field :description
         field :part_number
@@ -93,7 +95,7 @@ RailsAdmin.config do |config|
       end
       edit do
         field :name
-        field :comnpany
+        field :company
         field :component_type
         field :description
         field :part_number
@@ -102,5 +104,64 @@ RailsAdmin.config do |config|
         field :projects
       end
     end
+
+  config.model 'Address' do
+    create do
+      field :name
+      field :address1
+      field :address2
+      field :city
+      field :state, :enum do
+        active false
+        label 'You can choose a state when editing'
+        enum{[]}
+      end
+      field :postal_code
+      field :country_id, :enum do
+        enum do
+          ISO3166::Country.all
+        end
+      end
+      field :latitude
+      field :longitude
+    end
+
+    edit do
+      field :name
+      field :address1
+      field :address2
+      field :city
+      field :state, :enum do
+        enum do
+           ISO3166::Country.find_country_by_alpha2(bindings[:object].country_id).states.map {|k,v| [v['name'],k]}
+        end
+      end
+      field :postal_code
+      field :country_id, :enum do
+        enum do
+          ISO3166::Country.all
+        end
+      end
+      field :latitude
+      field :longitude
+    end
+
+     show do
+      field :name
+      field :address1
+      field :address2
+      field :city
+      field :state
+      field :postal_code
+      field :country_id, :enum do
+        enum do
+          ISO3166::Country.all
+        end
+      end
+      field :latitude
+      field :longitude
+    end
+
+  end
 
 end

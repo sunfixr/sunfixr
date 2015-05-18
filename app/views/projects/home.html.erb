@@ -19,7 +19,7 @@
         <p>
           <div class='matt'><b><%=@project.description%></b></div>
           <div class='matt'><b>Year installed:</b> <%=@project.install_date.to_s%></div>
-          <div class='matt'><b>Company:</b> <%=@project.company.name%></div>
+          <div class='matt'><b>Company:</b> <%=@project.company && @project.company.name%></div>
           <div class='matt'><b>Parts:</b></div>
           <% @project.components.each do |component| %>
             <div class='matt'><%=component.name %></div>

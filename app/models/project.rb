@@ -10,11 +10,7 @@ class Project < ActiveRecord::Base
   has_many :components, through: :components_project
   has_many :log_entries
 
-  accepts_nested_attributes_for :company
   accepts_nested_attributes_for :address
- # accepts_nested_attributes_for :components
-
-
   before_validation :set_address_name, :slugify
 
 
