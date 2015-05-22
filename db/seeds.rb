@@ -6,8 +6,4 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Project.create([
-                        {name: 'Ditjunga', slug: 'ditjunga'},
-                        {name: 'Sunnyville', slug: 'sunnyville'},
-                        {name: 'LaLaLand', slug: 'lalaland'}
-                    ])
+User.all.each {|user| user.reset_authentication_token! }

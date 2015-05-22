@@ -1,0 +1,21 @@
+%h1 Listing companies
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th
+      %th
+      %th
+      
+  %tbody
+    - @companies.each do |company|
+      %tr
+        %td= company.name
+        %td= link_to 'Show', api_v1_company_path(company)
+        %td= link_to 'Edit', edit_api_v1_company_path(company)
+        %td= link_to 'Destroy', api_v1_company_path(company), :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Company', new_api_v1_company_path

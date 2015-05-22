@@ -1,0 +1,19 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @project.name
+%p
+  %b Slug:
+  = @project.slug
+%p
+  %b Description:
+  = @project.description
+%p
+  %b Install Date:
+  = @project.install_date.to_s
+=render partial: 'addresses/show_address', locals: {address: @project.address}
+
+= link_to 'Edit', edit_api_v1_project_path(@project)
+\|
+= link_to 'Back', api_v1_projects_path

@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @address.name
+=render :partial => 'show_address', locals: {address: @address}
+= link_to 'Edit', edit_api_v1_address_path(@address)
+\|
+= link_to 'Back', api_v1_addresses_path

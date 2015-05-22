@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @component.name
+%p
+  %b Company:
+  = @component.company_id
+%p
+  %b Part number:
+  = @component.part_number
+%p
+  %b Serial number:
+  = @component.serial_number
+
+= link_to 'Edit', edit_api_v1_component_path(@component)
+\|
+= link_to 'Back', api_v1_components_path

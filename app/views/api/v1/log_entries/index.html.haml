@@ -1,0 +1,25 @@
+%h1 Listing log_entries
+
+%table
+  %thead
+    %tr
+      %th User
+      %th Component
+      %th Comments
+      %th
+      %th
+      %th
+      
+  %tbody
+    - @log_entries.each do |log_entry|
+      %tr
+        %td= log_entry.user
+        %td= log_entry.component_id
+        %td= log_entry.comments
+        %td= link_to 'Show', api_v1_log_entry_path(log_entry)
+        %td= link_to 'Edit', edit_api_v1_log_entry_path(log_entry)
+        %td= link_to 'Destroy', api_v1_log_entry_path(log_entry), :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Log entry', new_api_v1_log_entry_path

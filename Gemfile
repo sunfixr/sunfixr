@@ -35,6 +35,7 @@ gem 'redcarpet'
 gem 'rails_admin'
 gem 'devise'
 gem 'cancan'
+gem 'attr_encrypted'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

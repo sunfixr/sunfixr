@@ -9,10 +9,22 @@
       =image_tag "sunfixr-logo.png"
   #navbar.collapse.navbar-collapse
     %ul.nav.navbar-nav
-      %li.active
+      %li
         =link_to('Projects', projects_path)
       %li
-        =link_to('admin', rails_admin_path)
+        =link_to('admin', rails_admin_path) if current_user && current_user.admin?
+    -if current_user
+      %ul.nav.navbar-nav.navbar-right
+        %li
+          =link_to(current_user.email,edit_user_registration_path)
+        %li
+          =link_to('Sign Out',destroy_user_session_path, method: :delete)
+    -else
+      %ul.nav.navbar-nav.navbar-right
+        %li
+          =link_to('Sign Up',new_user_registration_path)
+        %li
+          =link_to('Sign In',new_user_session_path)
 -if notice
   .alert-box.success
     =notice
