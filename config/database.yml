@@ -82,7 +82,7 @@ test:
 #
 production:
   <<: *default
-  host: <%= ENV['SUNFIXR_DATABASE_HOST'] %>
+  host: <%= ENV['RDS_HOSTNAME'] %>
   database: sunfixr_production
-  username: <%= ENV['SUNFIXR_DATABASE_USER'] %>
-  password: <%= ENV['SUNFIXR_DATABASE_PASSWORD'] %>
+  username: <%= ENV['RDS_USERNAME'] %>
+  password: <%= ENV['RDS_PASSWORD'] %>
