@@ -1,4 +1,4 @@
-= form_for @log_entry do |f|
+= form_for @log_entry, url: @log_entry.id ? api_v1_log_entry_path(@log_entry) : api_v1_log_entries_path do |f|
   - if @log_entry.errors.any?
     #error_explanation
       %h2= "#{pluralize(@log_entry.errors.count, "error")} prohibited this log_entry from being saved:"

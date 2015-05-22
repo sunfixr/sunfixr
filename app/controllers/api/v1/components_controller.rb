@@ -1,4 +1,4 @@
-class ComponentsController < ApplicationController
+class Api::V1::ComponentsController < ApplicationController
   before_action :set_component, only: [:show, :edit, :update, :destroy]
 
   # GET /components

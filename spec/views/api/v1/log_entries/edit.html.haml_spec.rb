@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "log_entries/edit", :type => :view do
+RSpec.describe "api/v1/log_entries/edit", :type => :view do
   before(:each) do
     @log_entry = assign(:log_entry, FactoryGirl.create(:log_entry))
   end
@@ -8,7 +8,7 @@ RSpec.describe "log_entries/edit", :type => :view do
   it "renders the edit log_entry form" do
     render
 
-    assert_select "form[action=?][method=?]", log_entry_path(@log_entry), "post" do
+    assert_select "form[action=?][method=?]", api_v1_log_entry_path(@log_entry), "post" do
 
       assert_select "input#log_entry_user[name=?]", "log_entry[user]"
 

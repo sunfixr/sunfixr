@@ -1,4 +1,4 @@
-= form_for @project do |f|
+= form_for @project, url: @project.id ? api_v1_project_path(@project) : api_v1_projects_path do |f|
   - if @project.errors.any?
     #error_explanation
       %h2= "#{pluralize(@project.errors.count, "error")} prohibited this project from being saved:"
@@ -24,7 +24,7 @@
           = f.label :description
           = f.text_field :description
       =f.fields_for :address do |a|
-        =render :partial => 'addresses/address_fields', locals: {f: a}
+        =render :partial => 'api/v1/addresses/address_fields', locals: {f: a}
       .row
         .small-12.columns
           = f.label :company

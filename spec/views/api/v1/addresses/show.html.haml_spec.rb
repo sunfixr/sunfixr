@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "addresses/show", :type => :view do
+RSpec.describe "api/v1/addresses/show", :type => :view do
   before(:each) do
     @address = assign(:address, Address.create!(
       :name => "Name",

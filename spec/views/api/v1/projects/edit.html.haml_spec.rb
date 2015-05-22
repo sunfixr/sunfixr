@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "projects/edit", :type => :view do
+RSpec.describe "api/v1/projects/edit", :type => :view do
   before(:each) do
     @project = assign(:project, create(:project))
   end
@@ -8,7 +8,7 @@ RSpec.describe "projects/edit", :type => :view do
   it "renders the edit project form" do
     render
 
-    assert_select "form[action=?][method=?]", project_path(@project), "post" do
+    assert_select "form[action=?][method=?]", api_v1_project_path(@project), "post" do
 
       assert_select "input#project_name[name=?]", "project[name]"
 

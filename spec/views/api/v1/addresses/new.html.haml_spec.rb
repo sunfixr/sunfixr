@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "addresses/edit", :type => :view do
+RSpec.describe "api/v1/addresses/new", :type => :view do
   before(:each) do
-    @address = assign(:address, Address.create!(
+    assign(:address, Address.new(
       :name => "MyString",
       :address1 => "MyString",
       :address2 => "MyString",
@@ -15,10 +15,10 @@ RSpec.describe "addresses/edit", :type => :view do
     ))
   end
 
-  it "renders the edit address form" do
+  it "renders new address form" do
     render
 
-    assert_select "form[action=?][method=?]", address_path(@address), "post" do
+    assert_select "form[action=?][method=?]", api_v1_addresses_path, "post" do
 
       assert_select "input#address_name[name=?]", "address[name]"
 

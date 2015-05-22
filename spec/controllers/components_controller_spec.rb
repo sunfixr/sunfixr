@@ -18,7 +18,7 @@ require 'rails_helper'
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
 
-RSpec.describe ComponentsController, :type => :controller do
+RSpec.describe Api::V1::ComponentsController, :type => :controller do
 
   # This should return the minimal set of attributes required to create a valid
   # Component. As you add validations to Component, be sure to

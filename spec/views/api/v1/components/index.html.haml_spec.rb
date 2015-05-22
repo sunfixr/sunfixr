@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "components/index", :type => :view do
+RSpec.describe "api/v1/components/index", :type => :view do
   let(:company) {create :company}
   before(:each) do
     assign(:components, [

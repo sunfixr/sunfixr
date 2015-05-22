@@ -1,4 +1,4 @@
-class ComponentsProjectsController < ApplicationController
+class Api::V1::ComponentsProjectsController < ApplicationController
   # POST /projects
   # POST /projects.json
   def create

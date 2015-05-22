@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "companies/index", :type => :view do
+RSpec.describe "api/v1/companies/index", :type => :view do
   before(:each) do
     assign(:companies, [
       Company.create!(

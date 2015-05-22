@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe "components/edit", :type => :view do
-  let(:company){create :company}
+RSpec.describe "api/v1/components/new", :type => :view do
+  let(:company) {create :company}
   before(:each) do
-    @component = assign(:component, Component.create!(
+    assign(:component, Component.new(
       :name => "MyString",
       :company_id => company.id,
       :part_number => "MyString",
@@ -11,10 +11,10 @@ RSpec.describe "components/edit", :type => :view do
     ))
   end
 
-  it "renders the edit component form" do
+  it "renders new component form" do
     render
 
-    assert_select "form[action=?][method=?]", component_path(@component), "post" do
+    assert_select "form[action=?][method=?]", api_v1_components_path, "post" do
 
       assert_select "input#component_name[name=?]", "component[name]"
 

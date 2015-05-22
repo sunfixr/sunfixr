@@ -1,4 +1,4 @@
-= form_for @company do |f|
+= form_for @company, url: @company.id ? api_v1_company_path(@company) : api_v1_companies_path do |f|
   - if @company.errors.any?
     #error_explanation
       %h2= "#{pluralize(@company.errors.count, "error")} prohibited this company from being saved:"

@@ -1,34 +1,34 @@
 require "rails_helper"
 
-RSpec.describe CompaniesController, :type => :routing do
+RSpec.describe Api::V1::CompaniesController, :type => :routing do
   describe "routing" do
 
     it "routes to #index" do
-      expect(:get => "/companies").to route_to("companies#index")
+      expect(:get => "/api/v1/companies").to route_to("api/v1/companies#index")
     end
 
     it "routes to #new" do
-      expect(:get => "/companies/new").to route_to("companies#new")
+      expect(:get => "/api/v1/companies/new").to route_to("api/v1/companies#new")
     end
 
     it "routes to #show" do
-      expect(:get => "/companies/1").to route_to("companies#show", :id => "1")
+      expect(:get => "/api/v1/companies/1").to route_to("api/v1/companies#show", :id => "1")
     end
 
     it "routes to #edit" do
-      expect(:get => "/companies/1/edit").to route_to("companies#edit", :id => "1")
+      expect(:get => "/api/v1/companies/1/edit").to route_to("api/v1/companies#edit", :id => "1")
     end
 
     it "routes to #create" do
-      expect(:post => "/companies").to route_to("companies#create")
+      expect(:post => "/api/v1/companies").to route_to("api/v1/companies#create")
     end
 
     it "routes to #update" do
-      expect(:put => "/companies/1").to route_to("companies#update", :id => "1")
+      expect(:put => "/api/v1/companies/1").to route_to("api/v1/companies#update", :id => "1")
     end
 
     it "routes to #destroy" do
-      expect(:delete => "/companies/1").to route_to("companies#destroy", :id => "1")
+      expect(:delete => "/api/v1/companies/1").to route_to("api/v1/companies#destroy", :id => "1")
     end
 
   end

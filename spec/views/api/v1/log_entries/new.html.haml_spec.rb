@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "log_entries/new", :type => :view do
+RSpec.describe "api/v1/log_entries/new", :type => :view do
   let(:component){create :component}
   before(:each) do
     assign(:log_entry, LogEntry.new(
@@ -13,7 +13,7 @@ RSpec.describe "log_entries/new", :type => :view do
   it "renders new log_entry form" do
     render
 
-    assert_select "form[action=?][method=?]", log_entries_path, "post" do
+    assert_select "form[action=?][method=?]", api_v1_log_entries_path, "post" do
 
       assert_select "input#log_entry_user[name=?]", "log_entry[user]"
 

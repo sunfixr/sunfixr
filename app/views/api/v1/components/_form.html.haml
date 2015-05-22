@@ -1,4 +1,4 @@
-= form_for @component do |f|
+= form_for @component, url: @component.id ? api_v1_component_path(@component) : api_v1_components_path do |f|
   - if @component.errors.any?
     #error_explanation
       %h2= "#{pluralize(@component.errors.count, "error")} prohibited this component from being saved:"
@@ -6,6 +6,6 @@
         - @component.errors.full_messages.each do |msg|
           %li= msg
 
-  =render partial: 'components/fields', locals: {f: f}
+  =render partial: 'api/v1/components/fields', locals: {f: f}
   .actions
     = f.submit 'Save'
