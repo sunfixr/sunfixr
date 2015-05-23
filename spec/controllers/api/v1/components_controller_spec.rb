@@ -83,7 +83,7 @@ RSpec.describe Api::V1::ComponentsController, :type => :controller do
 
       it "redirects to the created component" do
         post :create, {:component => valid_attributes}, valid_session
-        expect(response).to redirect_to(Component.last)
+        expect(response).to redirect_to(api_v1_component_url(Component.last))
       end
     end
 
@@ -124,7 +124,7 @@ RSpec.describe Api::V1::ComponentsController, :type => :controller do
       it "redirects to the component" do
         component = Component.create! valid_attributes
         put :update, {:id => component.to_param, :component => valid_attributes}, valid_session
-        expect(response).to redirect_to(component)
+        expect(response).to redirect_to(api_v1_component_url(component))
       end
     end
 
@@ -154,7 +154,7 @@ RSpec.describe Api::V1::ComponentsController, :type => :controller do
     it "redirects to the components list" do
       component = Component.create! valid_attributes
       delete :destroy, {:id => component.to_param}, valid_session
-      expect(response).to redirect_to(components_url)
+      expect(response).to redirect_to(api_v1_components_url)
     end
   end
 

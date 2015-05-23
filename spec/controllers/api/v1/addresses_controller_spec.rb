@@ -92,7 +92,7 @@ RSpec.describe Api::V1::AddressesController, :type => :controller do
 
       it "redirects to the created address" do
         post :create, {:address => valid_attributes}, valid_session
-        expect(response).to redirect_to(Address.last)
+        expect(response).to redirect_to(api_v1_address_url(Address.last))
       end
     end
 
@@ -143,7 +143,7 @@ RSpec.describe Api::V1::AddressesController, :type => :controller do
       it "redirects to the address" do
         address = Address.create! valid_attributes
         put :update, {:id => address.to_param, :address => valid_attributes}, valid_session
-        expect(response).to redirect_to(address)
+        expect(response).to redirect_to(api_v1_address_url(address))
       end
     end
 
@@ -173,7 +173,7 @@ RSpec.describe Api::V1::AddressesController, :type => :controller do
     it "redirects to the addresses list" do
       address = Address.create! valid_attributes
       delete :destroy, {:id => address.to_param}, valid_session
-      expect(response).to redirect_to(addresses_url)
+      expect(response).to redirect_to(api_v1_addresses_url)
     end
   end
 

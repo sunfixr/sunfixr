@@ -1,0 +1,31 @@
+%h1 Listing Projects
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Slug
+      %th Description
+      %th Install Date
+      %th Created At
+      %th Updated At
+      %th
+      %th
+      %th
+
+  %tbody
+    - @projects.each do |project|
+      %tr
+        %td= project.name
+        %td= project.slug
+        %td= project.description
+        %td= project.install_date.to_s
+        %td= project.created_at.to_s
+        %td= project.updated_at.to_s
+        %td= link_to 'Show', api_v1_project_path(project)
+        %td= link_to 'Edit', edit_api_v1_project_path(project)
+        %td= link_to 'Destroy', api_v1_project_path(project), :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Project', new_api_v1_project_path

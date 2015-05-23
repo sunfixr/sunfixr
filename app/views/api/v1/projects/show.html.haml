@@ -12,7 +12,7 @@
 %p
   %b Install Date:
   = @project.install_date.to_s
-=render partial: 'addresses/show_address', locals: {address: @project.address}
+=render partial: 'api/v1/addresses/show_address', locals: {address: @project.address}
 
 = link_to 'Edit', edit_api_v1_project_path(@project)
 \|

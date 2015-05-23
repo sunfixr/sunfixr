@@ -42,14 +42,6 @@ RSpec.describe Api::V1::ProjectsController, :type => :controller do
   # ProjectsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
-  describe "GET index" do
-    it "assigns all projects as @projects" do
-      project = Project.create! valid_attributes
-      get :index, {}, valid_session
-      expect(assigns(:projects)).to eq([project])
-    end
-  end
-
   describe "GET show" do
     it "assigns the requested project as @project" do
       project = Project.create! valid_attributes
@@ -89,7 +81,7 @@ RSpec.describe Api::V1::ProjectsController, :type => :controller do
 
       it "redirects to the created project" do
         post :create, {:project => valid_attributes}, valid_session
-        expect(response).to redirect_to(Project.last)
+        expect(response).to redirect_to(api_v1_project_url(Project.last))
       end
     end
 
@@ -147,7 +139,7 @@ RSpec.describe Api::V1::ProjectsController, :type => :controller do
       it "redirects to the project" do
         project = Project.create! valid_attributes
         put :update, {:id => project.to_param, :project => valid_attributes}, valid_session
-        expect(response).to redirect_to(project)
+        expect(response).to redirect_to(api_v1_project_url(project))
       end
     end
 
@@ -177,7 +169,7 @@ RSpec.describe Api::V1::ProjectsController, :type => :controller do
     it "redirects to the projects list" do
       project = Project.create! valid_attributes
       delete :destroy, {:id => project.to_param}, valid_session
-      expect(response).to redirect_to(projects_url)
+      expect(response).to redirect_to(api_v1_projects_url)
     end
   end
 

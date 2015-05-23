@@ -84,7 +84,7 @@ RSpec.describe Api::V1::LogEntriesController, :type => :controller do
 
       it "redirects to the created log_entry" do
         post :create, {:log_entry => valid_attributes}, valid_session
-        expect(response).to redirect_to(LogEntry.last)
+        expect(response).to redirect_to(api_v1_log_entry_url(LogEntry.last))
       end
     end
 
@@ -126,7 +126,7 @@ RSpec.describe Api::V1::LogEntriesController, :type => :controller do
       it "redirects to the log_entry" do
         log_entry = LogEntry.create! valid_attributes
         put :update, {:id => log_entry.to_param, :log_entry => valid_attributes}, valid_session
-        expect(response).to redirect_to(log_entry)
+        expect(response).to redirect_to(api_v1_log_entry_url(log_entry))
       end
     end
 
@@ -156,7 +156,7 @@ RSpec.describe Api::V1::LogEntriesController, :type => :controller do
     it "redirects to the log_entries list" do
       log_entry = LogEntry.create! valid_attributes
       delete :destroy, {:id => log_entry.to_param}, valid_session
-      expect(response).to redirect_to(log_entries_url)
+      expect(response).to redirect_to(api_v1_log_entries_url)
     end
   end
 

@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe "LogEntries", :type => :request do
-  describe "GET /log_entries" do
+RSpec.describe "Components", :type => :request do
+  describe "GET /components" do
     it "works! (now write some real specs)" do
-      get log_entries_path
+      get api_v1_components_path
       expect(response).to have_http_status(200)
     end
   end

@@ -28,7 +28,7 @@ class Api::V1::LogEntriesController < ApplicationController
 
     respond_to do |format|
       if @log_entry.save
-        format.html { redirect_to @log_entry, notice: 'Log entry was successfully created.' }
+        format.html { redirect_to api_v1_log_entry_url(@log_entry), notice: 'Log entry was successfully created.' }
         format.json { render :show, status: :created, location: @log_entry }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class Api::V1::LogEntriesController < ApplicationController
   def update
     respond_to do |format|
       if @log_entry.update(log_entry_params)
-        format.html { redirect_to @log_entry, notice: 'Log entry was successfully updated.' }
+        format.html { redirect_to api_v1_log_entry_url(@log_entry), notice: 'Log entry was successfully updated.' }
         format.json { render :show, status: :ok, location: @log_entry }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class Api::V1::LogEntriesController < ApplicationController
   def destroy
     @log_entry.destroy
     respond_to do |format|
-      format.html { redirect_to log_entries_url, notice: 'Log entry was successfully destroyed.' }
+      format.html { redirect_to api_v1_log_entries_url, notice: 'Log entry was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

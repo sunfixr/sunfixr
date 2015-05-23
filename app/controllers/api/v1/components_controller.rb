@@ -28,7 +28,7 @@ class Api::V1::ComponentsController < ApplicationController
 
     respond_to do |format|
       if @component.save
-        format.html { redirect_to @component, notice: 'Component was successfully created.' }
+        format.html { redirect_to api_v1_component_url(@component), notice: 'Component was successfully created.' }
         format.json { render :show, status: :created, location: @component }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class Api::V1::ComponentsController < ApplicationController
   def update
     respond_to do |format|
       if @component.update(component_params)
-        format.html { redirect_to @component, notice: 'Component was successfully updated.' }
+        format.html { redirect_to api_v1_component_url(@component), notice: 'Component was successfully updated.' }
         format.json { render :show, status: :ok, location: @component }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class Api::V1::ComponentsController < ApplicationController
   def destroy
     @component.destroy
     respond_to do |format|
-      format.html { redirect_to components_url, notice: 'Component was successfully destroyed.' }
+      format.html { redirect_to api_v1_components_url, notice: 'Component was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

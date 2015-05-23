@@ -83,7 +83,7 @@ RSpec.describe Api::V1::CompaniesController, :type => :controller do
 
       it "redirects to the created company" do
         post :create, {:company => valid_attributes}, valid_session
-        expect(response).to redirect_to(Company.last)
+        expect(response).to redirect_to(api_v1_company_url(Company.last))
       end
     end
 
@@ -122,7 +122,7 @@ RSpec.describe Api::V1::CompaniesController, :type => :controller do
       it "redirects to the company" do
         company = Company.create! valid_attributes
         put :update, {:id => company.to_param, :company => valid_attributes}, valid_session
-        expect(response).to redirect_to(company)
+        expect(response).to redirect_to(api_v1_company_url(company))
       end
     end
 
@@ -152,7 +152,7 @@ RSpec.describe Api::V1::CompaniesController, :type => :controller do
     it "redirects to the companies list" do
       company = Company.create! valid_attributes
       delete :destroy, {:id => company.to_param}, valid_session
-      expect(response).to redirect_to(companies_url)
+      expect(response).to redirect_to(api_v1_companies_url)
     end
   end
 
