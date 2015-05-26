@@ -1,0 +1,65 @@
+
+<div class="projects-title col-sm-3 col-sm-offset-1">
+        <h3>Current Projects</h3>
+</div>
+<div class="projects-title col-sm-2">
+  <%= button_to("New Project", new_api_v1_project_path, :method => :get, class: 'button expand btn-warning') if current_user && current_user.admin? %>
+</div>
+<div class="col-md-12">
+
+  <% item_names = [] %>
+
+    <div class="carousel slide" id="myCarousel">
+        <div class="carousel-inner">
+              <!-- =link_to(project.name,"project/#{project.slug}") -->
+            <div class="item active">
+                    <ul class="thumbnails">
+          <% @projects.each do |project| %>
+            <% item_names << project.id %>
+                <li class="col-sm-3 slider-project">
+                <a href="project/<%=project.slug%>">
+                <div class="fff">
+								<div class="thumbnail img-responsive project-preview">
+                  <%=image_tag("project-img-1.png")%>
+                    <div class="caption">
+                      <div>
+                        <h4><%= project.name %></h4>
+                        <p><%= project.description %></p>
+                        <!-- <a class="button expand btn-default" href="project/<%=project.slug%>"><%= project.name %></a> -->
+                      </div>
+                    </div>
+								</div>
+
+                </div>
+              </a>
+                </li>
+                <% if item_names.length % 4 == 0 %>
+                  </ul>
+                  </div>
+                  <div class="item">
+                  <ul class="thumbnails">
+                <% end %>
+          <% end %>
+
+                    </ul>
+              </div><!-- /Slide3 -->
+        </div>
+
+
+	   <nav>
+			<ul class="control-box pager">
+				<li><a data-slide="prev" href="#myCarousel" class=""><i class="glyphicon glyphicon-chevron-left"></i></a></li>
+				<li><a data-slide="next" href="#myCarousel" class=""><i class="glyphicon glyphicon-chevron-right"></i></li>
+			</ul>
+		</nav>
+	   <!-- /.control-box -->
+
+    </div><!-- /#myCarousel -->
+</div> <!--col-md-12-->
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      console.info("carousel length: " + $(".carousel-inner").length);
+    });
+
+  </script>
