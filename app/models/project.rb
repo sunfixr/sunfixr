@@ -11,7 +11,7 @@ class Project < ActiveRecord::Base
   has_many :log_entries
   has_one :profile
 
-  #accepts_nested_attributes_for :address
+  accepts_nested_attributes_for :address
   before_validation :set_address_name, :slugify
 
 
