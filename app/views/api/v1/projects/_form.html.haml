@@ -30,6 +30,12 @@
           = f.label :company
           = f.collection_select  :company_id, Company.all, :id, :name
     .medium-6.columns
+      .row
+        %h2 Profile Picture
+        .small-12.columns
+          =f.fields_for :profile do |pic|
+            =pic.hidden_field :profile, value: @project.profile
+            =pic.file_field :profile
       %h2 Components
       -@project.components.each do |component|
         .row

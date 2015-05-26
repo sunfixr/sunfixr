@@ -7,6 +7,7 @@ require 'rspec/mocks'
 require 'factory_girl_rails'
 require 'faker'
 require 'capybara/rspec'
+require 'support/controller_macros'
 #FactoryGirl.find_definitions
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -62,5 +63,10 @@ RSpec.configure do |config|
       DatabaseCleaner.clean
     end
   end
+
+  config.include Devise::TestHelpers, type: :view
+  config.include Devise::TestHelpers, type: :controller
+  config.extend ControllerMacros, type: :view
+  config.extend ControllerMacros, type: :controller
 end
 

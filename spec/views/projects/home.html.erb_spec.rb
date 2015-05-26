@@ -1,9 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe "projects/home", :type => :view do
+  login_user
   before(:each) do
+
     @project = assign(:project,
-                           build(:project, name: 'project 1', slug: 'install1',
+                           build(:project, id: 123, name: 'project 1', slug: 'install1',
                                  company: build(:company),
                                  components: [build(:component),build(:component)] )
 

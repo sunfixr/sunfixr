@@ -26,6 +26,21 @@
   color: white;
 }
 
-#project-home {
+#projects-home {
   //Stef you can add css here for the home page
+
+
+  #map-canvas {
+    height: 400px;
+    margin: 0px;
+    padding: 0px
+  }
+
+  .map-image {
+    height: 400px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    /*clear: both;*/
+  }
+
 }

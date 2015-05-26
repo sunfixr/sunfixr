@@ -80,7 +80,8 @@ class Api::V1::ProjectsController < ApplicationController
           :name, :slug, :company_id, :description, :install_date, :component_ids => [],
           :component_attributes => [:id,:name,:description,:company_id,:serial_number,:part_number],
           :company_attributes => [:id,:name],
-          :address_attributes => [:id,:addressable_id,:addressable_type,:name,:address1,:address2,:city,:state,:postal_code,:country_id,:latitude,:longitude]
+          :address_attributes => [:id,:addressable_id,:addressable_type,:name,:address1,:address2,:city,:state,:postal_code,:country_id,:latitude,:longitude],
+          :profile => [:profile, :profile_id, :profile_type]
       )
     end
 end

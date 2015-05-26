@@ -1,0 +1,45 @@
+#home-index{
+
+  #bg {
+    position: fixed;
+    top: -40%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+  }
+  #bg img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    min-width: 50%;
+    min-height: 50%;
+  }
+
+  .home-boxes {
+    background-color: #ffffff;
+    opacity: 0.8;
+    border: 10px solid transparent
+    // margin-left: 50px;
+    // margin-right: 50px;
+  }
+
+  .modules-center {
+
+  }
+
+  .thumbnail {
+    background-color: #ffffff;
+    opacity: 0.8;
+    border: 10px solid transparent
+  }
+
+  .caption {
+    p {
+      color: black;
+    }
+  }
+
+}

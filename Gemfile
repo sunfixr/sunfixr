@@ -37,6 +37,10 @@ gem 'devise'
 gem 'cancan'
 gem 'attr_encrypted'
 
+gem 'mini_magick'
+gem 'carrierwave'
+gem 'cloudinary'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
