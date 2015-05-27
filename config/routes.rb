@@ -26,4 +26,5 @@ Rails.application.routes.draw do
   get 'training' => 'training#index', as: 'training'
   get 'manuals' => 'manuals#index', as: 'manuals'
 
+  get 'mon' => 'mon#index', as: 'mon'
 end
