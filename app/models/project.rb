@@ -9,11 +9,14 @@ class Project < ActiveRecord::Base
   has_many :components_project, inverse_of: :project
   has_many :components, through: :components_project
   has_many :log_entries
-  has_one :profile
+  has_many :project_pics
+  has_many :users_projects
+  has_many :users, through: :users_projects
 
   accepts_nested_attributes_for :address
+  accepts_nested_attributes_for :project_pics, allow_destroy: true
+  accepts_nested_attributes_for :users_projects, allow_destroy: true
   before_validation :set_address_name, :slugify
-
 
 
   def self.build

@@ -1,0 +1,45 @@
+.row
+  .col-md-6
+    .row
+      .col-xs-12
+        %h3
+          Current Sunfixrs
+    .row
+      .col-xs-6
+        %strong
+          Email
+      .col-xs-3
+        %strong
+          Role
+      .col-xs-3
+    =form_for @project, url: project_path(@project.id,{return_to: project_users_path(@project)}), method: :patch do |f|
+      - @project.users_projects.each do |user_project|
+        =f.fields_for :users_projects, user_project do |u|
+          .row
+            .col-xs-6
+              #{user_project.user.email}
+            .col-xs-3
+              =u.text_field :role, {size: '8'}
+            .col-xs-3
+              =link_to('Remove', project_user_path(@project.slug,user_project.id), method: :delete, :data => { :confirm => 'Are you sure you want to remove this Sunfixr?' }, class: 'destroy_link')
+      =f.submit
+  .col-md-6
+    &nbsp
+    =form_tag project_invite_new_user_path(@project.id,{return_to: project_users_path(@project)}), method: :post do
+      .row
+        .col-xs-12
+          %h3
+            New Sunfixrs
+      .row
+        .col-xs-12
+          =label_tag :emails, 'Emails (Separate with commas)'
+          %br/
+          =text_field_tag :emails, nil, size: 40
+      .row
+        .col-xs-12
+          =label_tag :invitation
+          %br/
+          =text_area_tag :invitation, nil, cols: 40, rows: 8
+      .row
+        .col-xs-12
+          =submit_tag 'Invite new sunfixrs'

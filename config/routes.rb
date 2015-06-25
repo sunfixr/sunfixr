@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :user
+  devise_for :user, :controllers => {:registrations => "devise/sunfixr_registrations"}
 
  scope :api do
    scope :v1 do
@@ -18,10 +18,16 @@ Rails.application.routes.draw do
    end
   end
 
+  resources :projects, only: [:index, :show, :update] do
+    resources :project_pics, only: [:index, :destroy, :show]
+    resources :users, only: [:index, :destroy, :show]
+    post 'users/invite(.:format)', to: 'users#invite', as: 'invite_new_user'
+  end
+
+
+
   root 'home#index', as: :root
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  get 'projects' => 'projects#index'
-  get 'project/:name' => 'projects#home', as: 'project_home'
   get '/home' => 'home#index', as: :home_index
   get 'training' => 'training#index', as: 'training'
   get 'manuals' => 'manuals#index', as: 'manuals'

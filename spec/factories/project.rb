@@ -16,7 +16,8 @@ FactoryGirl.define do
     trait :with_components do
       after(:create){|project|  project.components = create_pair(:component)}
     end
-
+    factory :project_with_company, traits: [:with_company]
+    factory :project_with_components, traits: [:with_components]
   end
 
 

@@ -11,13 +11,12 @@
 
     <div class="carousel slide" id="myCarousel">
         <div class="carousel-inner">
-              <!-- =link_to(project.name,"project/#{project.slug}") -->
             <div class="item active">
                     <ul class="thumbnails">
           <% @projects.each do |project| %>
             <% item_names << project.id %>
                 <li class="col-sm-3 slider-project">
-                <a href="project/<%=project.slug%>">
+                <a href="projects/<%=project.slug%>">
                 <div class="fff">
 								<div class="thumbnail img-responsive project-preview">
                   <%=image_tag("project-img-1.png")%>
@@ -25,7 +24,6 @@
                       <div>
                         <h4><%= project.name %></h4>
                         <p><%= project.description %></p>
-                        <!-- <a class="button expand btn-default" href="project/<%=project.slug%>"><%= project.name %></a> -->
                       </div>
                     </div>
 								</div>

@@ -12,24 +12,15 @@
       %li
         =link_to('Projects', projects_path)
       %li
-        =link_to('admin', rails_admin_path) if current_user && current_user.admin?
-    -if current_user
-      %ul.nav.navbar-nav.navbar-right
-        %li
-          =link_to(current_user.email,edit_user_registration_path)
-        %li
-          =link_to('Sign Out',destroy_user_session_path, method: :delete)
-    -else
-      %ul.nav.navbar-nav.navbar-right
-        %li
-          =link_to('Sign Up',new_user_registration_path)
-        %li
-          =link_to('Sign In',new_user_session_path)
--if notice
-  .alert-box.success
-    =notice
+        =link_to('Admin', rails_admin_path) if can? :manage, Project
+    =render(partial: 'shared/navbar_login')
 -if alert
-  .alert-box.alert
-    =alert
-  .row
-    .col-xs-12
+  .alert.alert-danger{role: 'alert'}
+    %button{type: "button", class: "close", 'data-dismiss' => "alert"}
+      &times;
+    = alert
+-if notice
+  .alert.alert-info{role: 'alert'}
+    %button{type: "button", class: "close", 'data-dismiss' => "alert"}
+      &times;
+    =notice

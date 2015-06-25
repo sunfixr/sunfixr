@@ -19,6 +19,7 @@
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <%= hidden_field_tag :project_id, params[:project_id] %>
   </div>
 
   <div class="actions">

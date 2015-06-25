@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "api/v1/projects/edit", :type => :view do
   before(:each) do
-    @project = assign(:project, create(:project))
+    @project = assign(:project, create(:project, project_pics: [create(:project_pic),create(:project_pic)]))
   end
 
   it "renders the edit project form" do

@@ -5,9 +5,19 @@ class Ability
     # Define abilities for the passed in user here. For example:
     #
        user ||= User.new # guest user (not logged in)
+
        if user.admin?
-         can :manage, :all
+        return  can :manage, :all
        end
+
+       can [:manage_pictures], Project do |project|
+         user.sunfixr?(project.id) || user.project_admin?(project.id)
+       end
+       can [:manage_users], Project do |project|
+         user.project_admin?(project.id)
+       end
+
+
     #
     # The first argument to `can` is the action you are giving the user permission to do.
     # If you pass :manage it will apply to every action. Other common actions here are

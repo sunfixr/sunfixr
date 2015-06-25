@@ -8,6 +8,10 @@ require 'factory_girl_rails'
 require 'faker'
 require 'capybara/rspec'
 require 'support/controller_macros'
+
+
+Capybara.javascript_driver = :webkit
+Capybara.ignore_hidden_elements = false
 #FactoryGirl.find_definitions
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -54,16 +58,20 @@ RSpec.configure do |config|
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
   config.include FactoryGirl::Syntax::Methods
-
+  config.include Warden::Test::Helpers
   config.before(:suite) do
     begin
       DatabaseCleaner.start
       FactoryGirl.lint
+      Warden.test_mode!
     ensure
       DatabaseCleaner.clean
     end
   end
-
+  config.after(:suite) do
+    print "\n\n Cleaning up uploaded files.\n"
+    FileUtils.rm_rf("#{Rails.root}/public/uploads/test")
+  end
   config.include Devise::TestHelpers, type: :view
   config.include Devise::TestHelpers, type: :controller
   config.extend ControllerMacros, type: :view

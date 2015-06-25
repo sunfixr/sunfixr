@@ -13,7 +13,11 @@
         <div><%=component.name %></div>
       <%end%>
       <a href="#">See full maintenance log for <%=@project.name%>.</a>
-      <%= button_to("Delete", api_v1_project_path(@project), :confirm => "Are you sure you want to delete this project?", :method => :delete, class: 'btn btn-danger') if current_user && current_user.admin? %>
+
+        <%= link_to("Delete This Project", api_v1_project_path(@project, return_to: projects_path), :data => { :confirm => 'Are you sure?' }, :method => :delete, class: 'btn btn-danger destroy_link') if can?(:destroy,@project)  %>
+        <%= link_to("Manage Users", project_users_path(@project), class: 'btn btn-primary') if can?(:manage_users,@project) %>
+        <%= link_to("Edit Pictures", project_project_pics_path(@project),class: 'btn btn-primary') if can?(:manage_pictures,@project) %>
+
     </div>
   </div>
   <div class="col-sm-8">

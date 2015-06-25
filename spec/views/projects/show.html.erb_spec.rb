@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "projects/home", :type => :view do
+RSpec.describe "projects/show", :type => :view do
   login_user
   before(:each) do
 
