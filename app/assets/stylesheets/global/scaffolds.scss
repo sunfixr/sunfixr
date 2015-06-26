@@ -67,3 +67,14 @@ div {
     list-style: square;
   }
 }
+
+form#new_project{
+  label {
+    display: block;
+  }
+  input[type=text] {
+    width: 100%;
+  }
+}
+
+

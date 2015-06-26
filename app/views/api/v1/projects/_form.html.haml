@@ -6,67 +6,91 @@
         - @project.errors.full_messages.each do |msg|
           %li= msg
   .row
-    .medium-6.columns
-      .row
-        .small-12.columns
-          = f.label :name
-          = f.text_field :name
-      .row
-        .small-12.columns
-          = f.label :slug
-          = f.text_field :slug
-      .row
-        .small-12.columns
-          = f.label :install_date
-          = f.date_select :install_date, {start_year: 1990, end_year: Date.today.year}, class: 'medium-4 columns'
-      .row
-        .small-12.columns
-          = f.label :description
-          = f.text_field :description
-      =f.fields_for :address do |a|
-        =render :partial => 'api/v1/addresses/address_fields', locals: {f: a}
-      .row
-        .small-12.columns
-          = f.label :company
-          = f.collection_select  :company_id, Company.all, :id, :name
-    .medium-6.columns
-      %h2 Components
-      -@project.components.each do |component|
-        .row
-          .small-12.columns
-            #{component.name}
-      .row
-        .small-12.columns
-          %ul.accordion.flush{'data-accordion' => ''}
-            %li.accordion-navigation.expand
-              =link_to 'Add Exitisting Component', '#panel1a'
-              #panel1a.content.active
-                = f.label :component_ids
-                = f.collection_select  :component_ids, Component.all, :id, :name ,{:prompt => 'Please add components'},{multiple: true}
-            %li.accordion-navigation.expand
-              =link_to 'Add New Component', '#panel2a'
-              #panel2a.content
-                =fields_for :component do |c|
-                  .row
-                    .small-12.columns
-                      = c.label :name
-                      = c.text_field :name
-                  .row
-                    .small-12.columns
-                      = c.label :company_id
-                      = c.collection_select  :company_id, Company.all, :id, :name
-                  .row
-                    .small-12.columns
-                      = c.label :part_number
-                      = c.text_field :part_number
-                  .row
-                    .small-12.columns
-                      = c.label :serial_number
-                      = c.text_field :serial_number
-                  .row
-                    .small-12.columns
-                      =link_to 'Add component', 'javascript: postComponent',{class: 'button radius'}
-
+    .col-md-6
+      .panel.panel-default
+        %h3.panel-title
+          Project info
+        .panel-body
+          .row
+            .col-xs-12
+              = f.label :name
+              = f.text_field :name
+          .row
+            .col-xs-12
+              = f.label :slug
+              = f.text_field :slug
+          .row
+            .col-xs-12
+              = f.label :install_date
+              = f.date_select :install_date, {start_year: 1990, end_year: Date.today.year}, class: 'medium-4 columns'
+          .row
+            .col-xs-12
+              = f.label :description
+              = f.text_field :description
+          =f.fields_for :address do |a|
+            =render :partial => 'api/v1/addresses/address_fields', locals: {f: a}
+          .row
+            .col-xs-12
+              = f.label :company
+              = f.collection_select  :company_id, Company.all, :id, :name
+    .col-md-6
+      .panel.panel-default
+        %h3.panel-title
+          Components
+        .panel-body
+          -@project.components.each do |component|
+            .row
+              .col-xs-12
+                #{component.name}
+      .panel.panel-default
+        %h3.panel-title
+          Add / Edit Components
+        .panel-body
+          .row
+            .col-xs-12
+              .panel-group#accordion{:role => "tablist", 'aria-multiselectable' => "true"}
+                .panel.panel-default
+                  .panel-heading#headingOne{role: 'tab'}
+                    %h4.panel-title
+                      %a{role: "button", 'data-toggle' => "collapse", href: "#collapseOne", 'aria-expanded' => 'true', 'aria-controls' => 'collapseOne', 'data-parent'=>'#accordion'}
+                        Add Existing Component
+                  #collapseOne.panel-collapse.collapse.in{role: 'tabpanel', 'aria-labelledby' => 'headingOne'}
+                    .panel-body
+                      = f.label :component_ids
+                      = f.collection_select  :component_ids, Component.all, :id, :name ,{:prompt => 'Please add components'},{multiple: true}
+                .panel.panel-default
+                  .panel-heading#headingTwo{role: 'tab'}
+                    %h4.panel-title
+                      %a{class: "collapsed", role: "button", 'data-toggle' => "collapse", href: "#collapseTwo", 'aria-expanded' => 'false', 'aria-controls' => 'collapseTwo', 'data-parent'=>'#accordion'}
+                        Add New Component
+                  #collapseTwo.panel-collapse.collapse{role: 'tabpanel', 'aria-labelledby' => 'headingTwo'}
+                    .panel-body
+                      =fields_for :component do |c|
+                        .row
+                          .col-xs-12
+                            = c.label :name
+                            = c.text_field :name
+                        .row
+                          .col-xs-12
+                            = c.label :company_id
+                            = c.collection_select  :company_id, Company.all, :id, :name
+                        .row
+                          .col-xs-12
+                            = c.label :part_number
+                            = c.text_field :part_number
+                        .row
+                          .col-xs-12
+                            = c.label :serial_number
+                            = c.text_field :serial_number
+                        .row
+                          .col-xs-12
+                            &nbsp;
+                        .row
+                          .col-xs-12
+                            =link_to 'Add component', 'javascript: postComponent',{class: 'btn btn-primary btn-block'}
   .row
-    .small-12.columns
-      = f.submit 'Save'
+    .col-xs-12
+      &nbsp
+  .row
+    .col-md-6
+      = f.submit 'Save', class: 'btn btn-primary btn-block'
