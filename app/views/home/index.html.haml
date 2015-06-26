@@ -1,0 +1,50 @@
+%body
+  #bg
+    = image_tag "header.jpg"
+  .container
+    %br/
+    %br/
+    %br/
+    %br/
+    %br/
+    %br/
+    / Jumbotron Header
+    .row
+      .col-lg-12
+        %header.jumbotron.home-boxes
+          %h1 Sunfixr
+          %p
+            Hundreds of rural microgrids have been installed in the last decade, providing
+            electricity for communities outside of major power networks. Unfortunately, scarcity of local knowledge and resources
+            about the system means many of these installations will fail long before they should.
+          %br/
+          %p
+            Sunfixr is a project to educate and empower a local corps of
+            "SunFixers" to maintain these vital assets.
+    / Page Features
+    .row.modules-center
+      %br/
+      %br/
+      %br/
+      .col-md-4.col-sm-6
+        %a{:href => "/projects"}
+          .thumbnail
+            %img{:alt => "", :src => ""}/
+            .caption
+              %h3 Projects
+              %p Explore solar installations maintained with Sunfixr.
+      .col-md-4.col-sm-6
+        %a{:href => "/forum"}
+          .thumbnail
+            %img{:alt => "", :src => ""}/
+            .caption
+              %h3 Forum
+              %p Discussion and information sharing on common questions.
+      .col-md-4.col-sm-6
+        %a{:href => "/manuals"}
+          .thumbnail
+            %img{:alt => "", :src => ""}/
+            .caption
+              %h3 Manuals
+              %p Read company documentation for your solar system.
+    / /.row
