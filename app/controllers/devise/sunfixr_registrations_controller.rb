@@ -2,6 +2,7 @@
 class Devise::SunfixrRegistrationsController < Devise::RegistrationsController
   prepend_before_filter :add_to_project, only: [:new], if: proc { params[:project_id] }
   skip_before_filter :require_no_authentication, only: [:new], if: proc { params[:project_id] }
+
   def new
     super
   end
@@ -61,4 +62,6 @@ class Devise::SunfixrRegistrationsController < Devise::RegistrationsController
       redirect_to project_path(project.slug)
     end
   end
+
+
 end

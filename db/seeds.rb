@@ -27,12 +27,13 @@ ComponentsProject.create!([
   {component_id: 2, project_id: 1},
   {component_id: 3, project_id: 1}
 ])
+project = Project.create!(
+                    {name: "Ditunga", slug: "ditunga", description: "A nice solar installation in the DRC", install_date: "2006-05-18"}
+                )
 LogEntry.create!([
-  {project_id: 1, component_id: "3", user: "Bob", comments: "checked battery water levels"}
+  {project: project, component_id: "3", user: "Bob", comments: "checked battery water levels"}
 ])
-Project.create!([
-  {name: "Ditunga", slug: "ditunga", description: "A nice solar installation in the DRC", install_date: "2006-05-18"}
-])
+
 
 if Rails.env == 'development'
   User.create!([
