@@ -8,7 +8,7 @@ RSpec.describe "project_pics", :type => :view do
 
   it "should display a picture" do
     render(:template => "project_pics/index.html.haml")
-    assert_select "td>a", :text => "Destroy".to_s, :count => 2
+    assert_select ".row .col-sm-4>a", :text => "Destroy".to_s, :count => 2
   end
 
 end
