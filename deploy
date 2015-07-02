@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+git tag $1
+rm -f sunfixr-*.zip
+zip -r sunfixr-$1.zip ./ -x .\*/\* tmp/\* log/\* public/assets/\*
+zip -r sunfixr-$1.zip ./.ebextensions
+aws s3 cp sunfixr-$1.zip s3://sunfixr-source/versions/
+aws elasticbeanstalk create-application-version --application-name sunfixr --version-label sunfixr-$1 \
+ --description sunfixr-$1 --source-bundle S3Bucket="sunfixr-source",S3Key="versions/sunfixr-$1.zip" \
+ --auto-create-application
+
+aws elasticbeanstalk update-environment --environment-name sunfixr --version-label sunfixr-$1
