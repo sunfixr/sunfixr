@@ -17,15 +17,15 @@ class PictureUploader < CarrierWave::Uploader::Base
     # nil
   end
 
-  process convert: 'png', :resize_to_fit => [1024, 1024]
+  process convert: 'png', :resize_to_fit => [1024, 768]
 
   version :medium do
-    process resize_to_fit: [300, 300]
+    process resize_to_fit: [400, 300]
     process convert: 'png'
   end
 
   version :thumb do
-    process resize_to_fit: [100, 100]
+    process resize_to_fit: [160, 120]
     process convert: 'png'
   end
 

@@ -1,47 +1,71 @@
 :javascript
   var addProfilePic = function(){
-    var count = $('#project_pics').find('tr.fields').length
-    var table=$('#project_pics tr:nth-last-of-type(2)')
     var form = $('#edit_project_1')
-     table.before(
-        '<tr class="fields"><td><textarea name="project[project_pics_attributes][' +
-           count + '][notes]" id="add_project_project_pics_attributes_' + count + '_notes"></textarea></td><td> <input type="file" name="project[project_pics_attributes][' +
-           count + '][picture]" id="add_project_project_pics_attributes_' + count + '_picture"/><input type="hidden" name="project[project_pics_attributes][' +
-           count + '][picture_cache]" id="add_project_project_pics_attributes_' + count + '_picture_cache"/></td></tr>'
-        )
-    }
+    var count = form.find('div.row.fields').length
 
+    form.find('.row').last().before(
+          "<div class=\"panel panel-default\">" +
+          "  <div class=\"panel-heading\"> Upload a picture </div>" +
+          "  <div class=\"panel-body\">" +
+          "    <div class=\"row fields\">\n" +
+          "      <div class=\"col-xs-4 text-center\">\n" +
+          "        <textarea name=\"project[project_pics_attributes][" + count + '][notes]" id="add_project_project_pics_attributes_' + count + '_notes" cols="25" rows="5"></textarea>' + "\n" +
+          "      </div>\n" +
+          "      <div class=\"col-xs-4 text-center\"><img src=\"\" id=\"img_upload_" + count + "\" height=\"120\" width=\"160\"></div>\n" +
+          "      <div class=\"col-xs-4 text-center\">\n" +
+          "        <span class=\"btn btn-primary btn-block btn-file\">" +
+          "          Find Picture" +
+          "          <input type=\"file\" name=\"project[project_pics_attributes][" + count + '][picture]" id="add_project_project_pics_attributes_' + count + '_picture"/>' +
+          "        </span>" +
+          "        <input type=\"hidden\" name=\"project[project_pics_attributes][" + count + '][picture_cache]" id="add_project_project_pics_attributes_' + count + '_picture_cache"/>' + "\n" +
+          "      </div>\n" +
+          "    </div>\n" +
+          "  </div>\n" +
+          "</div>\n"
+        )
+    $('#add_project_project_pics_attributes_' + count + '_picture').change({imageNumber: count},function(event){
+      var tmppath = URL.createObjectURL(event.target.files[0]);
+      $('#img_upload_' + event.data.imageNumber).attr('src',tmppath);
+    })
+
+    }
+  /*
   $(document).ready(function(){
     var form = $('#edit_project_1')
     form.submit(function(){
       $('[id^=add]').appendTo($(this))
     })
-
   })
+  */
 
-
-
-
-
-%table#project_pics
-  %tr
-    %th
-      Notes
-    %th
-      Thumbnail
-  =form_for @project, url: project_path(@project.id,{return_to: project_project_pics_path(@project)}), method: :patch, html: { multipart: true } do |f|
-    - @project.project_pics.each do |pic|
-      =f.fields_for :project_pics, pic do |p|
-        %tr.fields
-          %td
-            =link_to('Destroy', project_project_pic_path(@project.slug,pic.id), method: :delete, :data => { :confirm => 'Are you sure?' }, class: 'destroy_link')
-          %td
-            =p.text_area :notes
-          %td
-            #{image_tag(pic.picture_url(:thumb), :width => 100, :height => 100)}
-    %tr
-      %td
-        =link_to "Add a Project Pic", 'javascript: addProfilePic()'
-    %tr
-      %td{span: 2}
-        =f.submit
+.panel.panel-default
+  .panel-heading
+    %h2.panel-title
+      Project #{@project.name}'s Pictures
+  .panel-body
+    =form_for @project, url: project_path(@project.id,{return_to: project_project_pics_path(@project)}), method: :patch, html: { multipart: true } do |f|
+      .row.top
+        .col-sm-4.text-center
+          %strong
+            Notes
+        .col-sm-4.text-center
+          %strong
+            Thumbnail
+        .col-sm-4
+          &nbsp;
+      - @project.project_pics.each do |pic|
+        =f.fields_for :project_pics, pic do |p|
+          .panel.panel-default
+            .panel-body
+              .row.fields
+                .col-sm-4.text-center
+                  =p.text_area :notes, cols: '25', rows: '5'
+                .col-sm-4.text-center
+                  #{image_tag(pic.picture_url(:thumb), :width => 160, :height => 120)}
+                .col-sm-4.text-center
+                  =link_to('Destroy', project_project_pic_path(@project.slug,pic.id), method: :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-primary btn-block destroy_link')
+      .row
+        .col-sm-6
+          =link_to "Add a Project Picture", 'javascript: addProfilePic()', class: 'btn btn-primary btn-block'
+        .col-sm-6
+          =f.submit 'Update Project', class: 'btn btn-primary btn-block'
