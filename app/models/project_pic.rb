@@ -10,7 +10,7 @@ class ProjectPic < ActiveRecord::Base
   delegate :url, :size, :path, to: :picture
 
   alias_attribute :filename, :original_filename
-
+  alias_attribute :short_name, :original_filename
   private
 
   def update_picture_attributes

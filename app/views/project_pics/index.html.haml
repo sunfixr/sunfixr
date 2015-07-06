@@ -61,7 +61,7 @@
                 .col-sm-4.text-center
                   =p.text_area :notes, cols: '25', rows: '5'
                 .col-sm-4.text-center
-                  #{image_tag(pic.picture_url(:thumb), :width => 160, :height => 120)}
+                  #{image_tag(pic.picture_url(:thumb, :secure => true), :width => 160, :height => 120)}
                 .col-sm-4.text-center
                   =link_to('Destroy', project_project_pic_path(@project.slug,pic.id), method: :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-primary btn-block destroy_link')
       .row
