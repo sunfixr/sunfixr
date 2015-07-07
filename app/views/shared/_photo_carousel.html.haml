@@ -1,0 +1,23 @@
+/ Carousel
+#myCarousel.carousel.slide
+  .carousel-inner
+    -@project.project_pics.each_with_index do |pic,i|
+      -if i==0
+        .item.active
+          %img{ :src => pic.picture_url(:secure => true), :alt => "" }
+          .carousel-container
+            .carousel-caption
+              %h1
+              %p.lead
+                =pic.notes
+      -else
+        .item
+          %img{ :src => pic.picture_url(:secure => true), :alt => "" }
+          .carousel-container
+            .carousel-caption
+              %h1
+              %p.lead
+                =pic.notes
+
+    %a.left.carousel-control{ :href => "#myCarousel", :data => { :slide => "prev" } } &lsaquo;
+    %a.right.carousel-control{ :href => "#myCarousel", :data => { :slide => "next" } } &rsaquo;
