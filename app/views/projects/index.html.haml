@@ -1,40 +1,30 @@
-.projects-title.col-sm-3.col-sm-offset-1
-  %h3 Current Projects
-.col-sm-2
-  -if can? :manage, Project
-    = button_to("New Project", new_api_v1_project_path, :method => :get, class: 'btn btn-warning btn-block', id: 'new_project_button')
-.col-md-12
-  - item_names = []
-  #myCarousel.carousel.slide
-    .carousel-inner
-      .item.active
-        %ul.thumbnails
-          - @projects.each do |project|
-            - item_names << project.id
-            %li.col-sm-3.slider-project
-              %a{:href => "projects/#{project.slug}"}
-                .fff
-                  .thumbnail.img-responsive.project-preview
-                    = image_tag("project-img-1.png")
-                    .caption
-                      %div
-                        %h4= project.name
-                        %p= project.description
-            - if item_names.length % 4 == 0
-              .item
-                %ul.thumbnails
-    %nav
-      %ul.control-box.pager
-        %li
-          %a{"data-slide" => "prev", :href => "#myCarousel"}
-            %i.glyphicon.glyphicon-chevron-left
-        %li
-          %a{"data-slide" => "next", :href => "#myCarousel"}
-            %i.glyphicon.glyphicon-chevron-right
-    / /.control-box
-  / /#myCarousel
-/ col-md-12
-:javascript
-  $(document).ready(function() {
-    console.info("carousel length: " + $(".carousel-inner").length);
-  });
+.panel.panel-default
+  .panel-heading
+    %h2.panel-title
+      Current Projects
+  .panel-body
+    .col-md-12
+      - item_names = []
+      #myCarousel.carousel.slide
+        .carousel-inner
+          .item.active
+            .thumbnails
+              - @projects.each do |project|
+                - item_names << project.id
+                .col-sm-3
+                  %a{:href => "projects/#{project.slug}"}
+                    .thumbnail.img-responsive.project-preview
+                      = image_tag(project.project_pics.first ? project.project_pics.first.picture_url(:medium, :secure => true) : 'project-img-1.png')
+                      .caption
+                        %div
+                          %h4= project.name
+                          %p= project.description
+/
+  .col-sm-2
+    -if can? :manage, Project
+      = button_to("New Project", new_api_v1_project_path, :method => :get, class: 'btn btn-warning btn-block', id: 'new_project_button')
+
+  :javascript
+    $(document).ready(function() {
+      console.info("carousel length: " + $(".carousel-inner").length);
+    });

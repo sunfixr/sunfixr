@@ -1,29 +1,11 @@
-#project-index {
+#projects-index {
 
-  h2 {
-    color: white;
-  }
-
-  a:link {
-    color: white;
-  }
-
-  a:visited {
-    color: white;
-  }
-
-  a:active {
-    color: white;
-  }
-
-  ul li {
-    list-style-type: none;
+  .project-preview {
     font-size: 1.5em;
-    line-height: 130%
+    line-height: 130%;
+    height:300px;
   }
 
-  background-image: url("#{image_path("header.jpg")}") ;
-  color: white;
 }
 
 

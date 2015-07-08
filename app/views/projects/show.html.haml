@@ -14,7 +14,7 @@
                   , #{@project.address.state}, #{@project.address.country_name}
             .row
               .col-xs-12.center-block
-                = image_tag(@project.project_pics.first.picture_url(:medium, :secure => true), class: 'img-responsive' )
+                = image_tag(@project.project_pics.first ? @project.project_pics.first.picture_url(:medium, :secure => true) : 'project-img-1.png', class: 'img-responsive' )
             .project-info
               .row
                 .col-xs-12.project-description
