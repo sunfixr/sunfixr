@@ -24,4 +24,14 @@ module ApplicationHelper
     params[:return_to] || path
   end
 
+  def state_select(f,options={})
+    if f.object.country_id
+      states = ISO3166::Country.find_country_by_alpha2(f.object.country_id.to_s).states.collect {|k,v| [v['name'],k]}
+    else
+      states = {'Choose a Country and save, then edit this project.' => ''}
+      options.merge!({disabled: 'disabled'})
+    end
+    f.select(:state, states.to_h,{},options)
+  end
+
 end

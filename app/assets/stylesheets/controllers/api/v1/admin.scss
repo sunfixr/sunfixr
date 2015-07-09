@@ -8,7 +8,10 @@
     margin-top: 10px;
   }
   .admin-item {
-    margin-top: 10px;
+    font-size: 1.2em;
+    .glyphicon {
+      margin-left: 10px;
+    }
   }
   .admin-controls {
     margin-top: 20px;
@@ -17,6 +20,7 @@
     font-size: 1.2em;
   }
   .admin-row {
-    line-height: 200%;
+    //line-height: 200%;
+    margin-top: 10px;
   }
 }

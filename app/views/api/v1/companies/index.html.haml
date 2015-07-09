@@ -1,20 +1,22 @@
-.panel.panel-default
-  .panel-heading
-    %h1.panel-title Companies
-  .panel-body
-    .row.admin-label
-      .col-sm-6
-        Name
-      .col-sm-6
-        &nbsp;
-    - @companies.each do |company|
-      .row.admin-item
-        .col-sm-6.admin-name
-          =company.name
-        .col-sm-6
-          = link_to 'Show', api_v1_company_path(company), class: 'btn btn-primary'
-          = link_to 'Edit', edit_api_v1_company_path(company), class: 'btn btn-warning'
-          = link_to 'Destroy', api_v1_company_path(company), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger'
-    .row
-      .col-xs-12.text-center.admin-controls
-        = link_to 'New Company', new_api_v1_company_path, class: 'btn btn-primary'
+.row
+  .col-md-6
+    .panel.panel-default
+      .panel-heading
+        %h1.panel-title Companies
+      .panel-body
+        .row.admin-label
+          .col-sm-8
+            Name
+          .col-sm-4
+            &nbsp;
+        - @companies.each do |company|
+          .row.admin-row
+            .col-sm-8.admin-item
+              =company.name
+            .col-sm-4.admin-item
+              = link_to '', api_v1_company_path(company), class: 'glyphicon glyphicon-zoom-in'
+              = link_to '', edit_api_v1_company_path(company), class: 'glyphicon glyphicon-pencil'
+              = link_to '', api_v1_company_path(company), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'glyphicon glyphicon-remove'
+        .row
+          .col-xs-12.text-center.admin-controls
+            = link_to 'New Company', new_api_v1_company_path, class: 'btn btn-primary'

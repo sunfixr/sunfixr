@@ -1,31 +1,30 @@
-%h1 Listing Projects
-
-%table
-  %thead
-    %tr
-      %th Name
-      %th Slug
-      %th Description
-      %th Install Date
-      %th Created At
-      %th Updated At
-      %th
-      %th
-      %th
-
-  %tbody
-    - @projects.each do |project|
-      %tr
-        %td= project.name
-        %td= project.slug
-        %td= project.description
-        %td= project.install_date.to_s
-        %td= project.created_at.to_s
-        %td= project.updated_at.to_s
-        %td= link_to 'Show', api_v1_project_path(project)
-        %td= link_to 'Edit', edit_api_v1_project_path(project)
-        %td= link_to 'Destroy', api_v1_project_path(project), :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Project', new_api_v1_project_path
+.row
+  .col-xs-12
+    .panel.panel-default
+      .panel-heading
+        %h1.panel-title Projects
+      .panel-body
+        .row.admin-label
+          .col-sm-4
+            Name
+          .col-sm-4
+            Description
+          .col-sm-2
+            Installed
+          .col-sm-2
+            &nbsp
+        - @projects.each do |project|
+          .row.admin-row
+            .col-sm-4.admin-item
+              = link_to project.name, project_path(project)
+            .col-sm-4.admin-item
+              = project.description
+            .col-sm-2.admin-item
+              = project.install_date.to_s
+            .col-sm-2.admin-item
+              = link_to '', api_v1_project_path(project), class: 'glyphicon glyphicon-zoom-in'
+              = link_to '', edit_api_v1_project_path(project), class: 'glyphicon glyphicon-pencil'
+              = link_to '', api_v1_project_path(project), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'glyphicon glyphicon-remove'
+        .row
+          .col-xs-12.admin-controls.text-center
+            = link_to 'New Project', new_api_v1_project_path, class: 'btn btn-primary'

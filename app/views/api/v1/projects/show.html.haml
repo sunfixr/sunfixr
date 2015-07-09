@@ -1,19 +1,32 @@
-%p#notice= notice
 
-%p
-  %b Name:
-  = @project.name
-%p
-  %b Slug:
-  = @project.slug
-%p
-  %b Description:
-  = @project.description
-%p
-  %b Install Date:
-  = @project.install_date.to_s
-=render partial: 'api/v1/addresses/show_address', locals: {address: @project.address}
-
-= link_to 'Edit', edit_api_v1_project_path(@project)
-\|
-= link_to 'Back', api_v1_projects_path
+.row
+  .col-md-6
+    .panel.panel-default
+      .panel-heading
+        %h1.panel-title New Project
+      .panel-body
+        .row.admin-row
+          .col-xs-4.admin-label
+            Name:
+          .col-xs-8.admin-item
+            = @project.name
+        .row.admin-row
+          .col-xs-4.admin-label
+            Slug:
+          .col-xs-8.admin-item
+            = @project.slug
+        .row.admin-row
+          .col-xs-4.admin-label
+            Description:
+          .col-xs-8.admin-item
+            = @project.description
+        .row.admin-row
+          .col-xs-4.admin-label
+            Install Date:
+          .col-xs-8.admin-item
+            = @project.install_date.to_s
+        =render partial: 'api/v1/addresses/show_address', locals: {address: @project.address}
+        .row
+          .col-xs-12.admin-controls.text-center
+            = link_to 'Edit', edit_api_v1_project_path(@project), class: 'btn btn-warning'
+            = link_to 'Back', api_v1_projects_path, class: 'btn btn-primary'

@@ -1,5 +1,12 @@
-%h1 New company
+.row
+  .col-md-6.center-block
+    .panel.panel-default
+      .panel-heading
+        %h1.panel-title
+          New Company
+      .panel-body
+        = render 'form'
+        .row.admin-controls
+          .col-xs-12.text-center
+            = link_to 'Back', back_to(api_v1_companies_path), class: 'btn btn-primary'
 
-= render 'form'
-
-= link_to 'Back', api_v1_companies_path

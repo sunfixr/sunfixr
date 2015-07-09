@@ -1,24 +1,25 @@
-.field
+.form-group
   = f.label :address1
-  = f.text_field :address1
-.field
+  = f.text_field :address1, class: 'form-control'
+.form-group
   = f.label :address2
-  = f.text_field :address2
-.field
+  = f.text_field :address2, class: 'form-control'
+.form-group
   = f.label :city
-  = f.text_field :city
-.field
+  = f.text_field :city, class: 'form-control'
+.form-group
   = f.label :state
-  = f.text_field :state
-.field
+  -#= f.text_field :state, class: 'form-control'
+  = state_select(f,{class: 'form-control' })
+.form-group
   = f.label :postal_code
-  = f.text_field :postal_code
-.field
+  = f.text_field :postal_code, class: 'form-control'
+.form-group
   = f.label :country_id
-  = country_select(f.object_name.to_s,"country_id",selected: f.object.country_id.to_s)
-.field
+  = country_select(f.object_name.to_s,"country_id",{selected: f.object.country_id.to_s, prompt: 'Select A Country'}, {class: 'form-control'})
+.form-group
   = f.label :latitude
-  = f.text_field :latitude
-.field
+  = f.text_field :latitude, class: 'form-control'
+.form-group
   = f.label :longitude
-  = f.text_field :longitude
+  = f.text_field :longitude, class: 'form-control'

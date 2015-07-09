@@ -1,7 +1,11 @@
-%h1 Editing project
-
-= render 'form'
-
-= link_to 'Show', api_v1_project_path(@project)
-\|
-= link_to 'Back', api_v1_projects_path
+.row
+  .col-md-6
+    .panel.panel-default
+      .panel-heading
+        %h1.panel-title Edit Project
+      .panel-body
+        = render 'form'
+        .row
+          .col-xs-12.text-center
+            = link_to 'Show', api_v1_project_path(@project), class: 'btn btn-primary'
+            = link_to 'Back', api_v1_projects_path, class: 'btn btn-primary'
