@@ -11,8 +11,14 @@
     %ul.nav.navbar-nav
       %li
         =link_to('Projects', projects_path)
-      %li
-        =link_to('Admin', rails_admin_path) if can? :manage, Project
+      %li.dropdown
+        =link_to('Admin', '#', class: 'dropdown-toggle', 'data-toggle' => 'dropdown', role: 'button',
+          'aria-haspopup' => 'true', 'aria-expanded' => "false" ) if can? :manage, Project
+        %ul{class: 'dropdown-menu dropdown-inverse'}
+          %li
+            =link_to 'Projects', api_v1_projects_path
+            =link_to 'Companies', api_v1_companies_path
+            =link_to 'Raw Data', rails_admin_path
     =render(partial: 'shared/navbar_login')
 -if alert
   .alert.alert-danger{role: 'alert'}
