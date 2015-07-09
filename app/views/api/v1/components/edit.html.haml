@@ -1,7 +1,12 @@
-%h1 Editing component
+.panel.panel-default
+  .panel-heading
+    %h1.panel-title
+      Edit component
+  .panel-body
+    = render 'form'
+    .row.admin-controls
+      .col-xs-12.text-center
+        = link_to 'Show',api_v1_component_path(@component), class: 'btn btn-primary'
+        = link_to 'Back', back_to(api_v1_components_path), class: 'btn btn-primary'
 
-= render 'form'
 
-= link_to 'Show',api_v1_component_path(@component)
-\|
-= link_to 'Back', api_v1_components_path

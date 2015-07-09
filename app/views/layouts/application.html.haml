@@ -12,7 +12,7 @@
   %body
     #top-nav-bar.container
       =render partial: 'shared/header'
-    %div.container{:id=>params[:controller] + '-' + params[:action]}
+    %div.container.page{:id=>params[:controller].gsub('/','_') + '-' + params[:action], class: "#{params[:controller].match(/api\/v1\//) ? 'admin' : ''}" }
       .row
         .col-xs-12
           = yield

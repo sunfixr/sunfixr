@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
  # force_ssl if: :ssl_configured?
-
+  include ApplicationHelper
 
   private
   def restrict_access_by_token

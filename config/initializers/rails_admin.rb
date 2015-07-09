@@ -100,7 +100,7 @@ RailsAdmin.config do |config|
         field :description
         field :part_number
         field :comments
-        field :log_entires
+        field :log_entries
         field :projects
       end
     end

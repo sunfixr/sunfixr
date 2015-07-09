@@ -19,4 +19,9 @@ module ApplicationHelper
 
     markdown.render(text).html_safe
   end
+
+  def back_to(path)
+    params[:return_to] || path
+  end
+
 end

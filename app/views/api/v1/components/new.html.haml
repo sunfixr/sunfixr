@@ -1,5 +1,9 @@
-%h1 New component
-
-= render 'form'
-
-= link_to 'Back', api_v1_components_path
+.panel.panel-default
+  .panel-heading
+    %h1.panel-title
+      New component
+  .panel-body
+    = render 'form'
+    .row.admin-controls
+      .col-xs-12.text-center
+        = link_to 'Back', back_to(api_v1_components_path), class: 'btn btn-primary'

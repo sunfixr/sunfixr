@@ -1,9 +1,29 @@
-%p#notice= notice
-
-%p
-  %b Name:
-  = @company.name
-
-= link_to 'Edit', edit_api_v1_company_path(@company)
-\|
-= link_to 'Back', api_v1_companies_path
+.panel.panel-default
+  .panel-heading
+    %h1.panel-title
+      Company
+  .panel-body
+    .row
+      .col-sm-4.admin-label
+        Name:
+      .col-sm-8.admin-value
+        = @company.name
+    .row
+      .col-sm-4.admin-label
+        Notes:
+      .col-sm-8.admin-value
+        = @company.notes
+    .row
+      .col-sm-4.admin-label
+        Created:
+      .col-sm-8.admin-value
+        = @company.created_at.to_s
+    .row
+      .col-sm-4.admin-label
+        Modified:
+      .col-sm-8.admin-value
+        = @company.updated_at.to_s
+    .row.admin-controls
+      .col-xs-12.text-center
+        = link_to 'Edit', edit_api_v1_company_path(@company), class: 'btn btn-warning'
+        = link_to 'Back', api_v1_companies_path, class: 'btn btn-primary'

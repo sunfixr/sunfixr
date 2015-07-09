@@ -1,12 +1,12 @@
-.field
+.form-group
   = f.label :name
-  = f.text_field :name
-.field
+  = f.text_field :name, class: 'form-control'
+.form-group
   = f.label :company_id
-  = f.collection_select  :company_id, Company.all, :id, :name
-.field
+  = f.collection_select  :company_id, Company.all, :id, :name,{},{class: 'form-control'}
+.form-group
   = f.label :part_number
-  = f.text_field :part_number
-.field
+  = f.text_field :part_number, class: 'form-control'
+.form-group
   = f.label :serial_number
-  = f.text_field :serial_number
+  = f.text_field :serial_number, class: 'form-control'

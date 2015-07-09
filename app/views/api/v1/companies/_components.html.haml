@@ -1,0 +1,26 @@
+= form_for @company, url: @company.id ? api_v1_company_path(@company) : api_v1_companies_path  do |f|
+  - if @company.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@company.errors.count, "error")} prohibited this company from being saved:"
+      %ul
+        - @company.errors.full_messages.each do |msg|
+          %li= msg
+  .row.admin-label
+    .col-xs-6
+      Name:
+    .col-xs-4
+      Part Num:
+    .col-xs-2
+      &nbsp;
+  -@company.components.each do |component|
+    .row.admin-name
+      .col-xs-6
+        =link_to component.name, edit_api_v1_component_path(component,return_to: edit_api_v1_company_url(@company))
+      .col-xs-4
+        =component.part_number
+      .col-xs-2
+        =link_to '', api_v1_component_path(component, return_to: edit_api_v1_company_url(@company)),{class: 'glyphicon glyphicon-remove', method: 'delete', :data => { :confirm => "Are you sure you want to delete #{component.name}?" }}
+        %span
+  .row.admin-controls
+    .col-xs-12
+      =link_to 'Add New Component', new_api_v1_component_path(company_id: @company.id, return_to: edit_api_v1_company_url(@company)), class: 'btn btn-primary btn-block'

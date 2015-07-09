@@ -15,7 +15,7 @@
                   .col-sm-3
                     %a{:href => "projects/#{project.slug}"}
                       .thumbnail.img-responsive.project-preview
-                        = image_tag(project.project_pics.first ? project.project_pics.first.picture_url(:medium, :secure => true) : 'project-img-1.png')
+                        = image_tag(project.project_pics.first ? project.project_pics.first.picture_url(:thumb, :secure => true) : 'project-img-1.png')
                         .caption
                           %div
                             %h4= project.name

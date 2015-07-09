@@ -1,13 +1,21 @@
-= form_for @company, url: @company.id ? api_v1_company_path(@company) : api_v1_companies_path do |f|
+= form_for @company, url: @company.id ? api_v1_company_path(@company) : api_v1_companies_path  do |f|
   - if @company.errors.any?
     #error_explanation
       %h2= "#{pluralize(@company.errors.count, "error")} prohibited this company from being saved:"
       %ul
         - @company.errors.full_messages.each do |msg|
           %li= msg
-
-  .field
-    = f.label :name
-    = f.text_field :name
-  .actions
-    = f.submit 'Save'
+  .form-group
+    =f.label 'Name:'
+    =f.text_field(:name, class: 'form-control')
+  .form-group
+    =f.label 'Notes:'
+    =f.text_area(:notes, class: 'form-control', rows: '6')
+  .form-group
+    =f.label 'Created:'
+    =f.datetime_local_field(:created_at,class: 'form-control',disabled: true, placeholder: 'Automatically updated.')
+  .form-group
+    =f.label 'Modified:'
+    =f.datetime_local_field(:updated_at,class: 'form-control',disabled: true, placeholder: 'Automatically updated.')
+  .form-group
+    = f.submit 'Save', class: 'form-control btn btn-primary'
