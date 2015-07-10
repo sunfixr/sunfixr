@@ -5,7 +5,9 @@
     line-height: 130%;
     height:260px;
   }
-
+  .thumbnail {
+    overflow: hidden;
+  }
 }
 
 
@@ -59,7 +61,7 @@
     }
 
     .project-description{
-      padding: 1.5em 0 1.5em 0;
+      padding: 1.5em 1.0em 1.5em 1.0em;
       font-size: 1.1em;
     }
 
