@@ -1,8 +1,9 @@
 var addProfilePic = function(){
     var form = $('#edit_project_1')
     var count = form.find('div.row.fields').length
-
-    form.find('.row').last().before(
+    console.info('in addProfilePic')
+    console.info($('#admin-controls').innerHtml)
+    $('#admin-controls').before(
         "<div class=\"panel panel-default\">" +
         "  <div class=\"panel-heading\"> Upload a picture </div>" +
         "  <div class=\"panel-body\">" +

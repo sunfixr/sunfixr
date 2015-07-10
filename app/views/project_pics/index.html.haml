@@ -25,7 +25,7 @@
                   #{image_tag(pic.picture_url(:thumb, :secure => true), :width => 160, :height => 120)}
                 .col-sm-4.text-center
                   =link_to('Destroy', project_project_pic_path(@project.slug,pic.id), method: :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-primary btn-block destroy_link')
-      .row
+      #admin-controls.row
         .col-sm-6
           =link_to "Add a Project Picture", 'javascript: addProfilePic()', class: 'btn btn-primary btn-block'
         .col-sm-6
