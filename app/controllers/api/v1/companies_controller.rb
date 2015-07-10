@@ -15,6 +15,7 @@ class Api::V1::CompaniesController < ApplicationController
   # GET /companies/new
   def new
     @company = Company.new
+    @company.address = Address.new
   end
 
   # GET /companies/1/edit
@@ -70,7 +71,7 @@ class Api::V1::CompaniesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def company_params
       params.require(:company).permit(
-          :name,
+          :name, :notes,
           :address_attributes => [:id,:addressable_id,:addressable_type,:name,:address1,:address2,:city,:state,:postal_code,:country_id,:latitude,:longitude]
       )
     end

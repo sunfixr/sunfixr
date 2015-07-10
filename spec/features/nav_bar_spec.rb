@@ -20,7 +20,7 @@ feature "Top Navigation Bar", :type => :feature do
 
 
     it 'should have a link to projects page' do
-      expect(@navbar.find_link('Projects')[:href]).to eq '/projects'
+      expect(@navbar.find('ul.navbar-nav>li:first-child a', text: 'Projects')[:href]).to eq '/projects'
     end
 
     it "should have the 'Sign Up' link in nav bar with project_id param" do
@@ -99,10 +99,24 @@ feature "Top Navigation Bar", :type => :feature do
       login_as(user, :scope => :user)
       visit '/projects/foo'
       @navbar = find('#navbar')
+      @dropdown = @navbar.find('.navbar-nav>li.dropdown')
     end
-    it "should have a link to the admin page" do
+    it "should have a link admin dropdown menu" do
       expect(@navbar).to have_link('Admin')
     end
+
+    it "should have a dropdown link for project management" do
+      expect(@dropdown.find_link('Projects')[:href]).to eq('/api/v1/projects')
+    end
+
+    it "should have a dropdown link for company management" do
+      expect(@dropdown.find_link('Companies')[:href]).to eq('/api/v1/companies')
+    end
+
+    it "should have a dropdown link for Raw Data management" do
+      expect(@dropdown.find_link('Raw Data')[:href]).to eq('/admin')
+    end
+
     it "should have the Join link" do
       expect(page).to have_link('Join')
     end
@@ -148,7 +162,7 @@ feature "Top Navigation Bar", :type => :feature do
     end
 
     it 'should have a link to projects page' do
-      expect(@navbar.find_link('Projects')[:href]).to eq '/projects'
+      expect(@navbar.find('ul.navbar-nav>li:first-child a', text: 'Projects')[:href]).to eq '/projects'
     end
 
     it "should not have the 'Sign Up' link in nav bar" do

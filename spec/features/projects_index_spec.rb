@@ -36,7 +36,7 @@ feature "Projects Page", :type => :feature do
 
     it "should have a new project link that goes to new project page" do
       click_button('New Project')
-      expect(page).to have_content('New project')
+      expect(page).to have_content('New Project')
     end
   end
 

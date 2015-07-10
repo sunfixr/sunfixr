@@ -2,14 +2,14 @@ require 'rails_helper'
 
 RSpec.describe "api/v1/addresses/edit", :type => :view do
   before(:each) do
-    @address = assign(:address, Address.create!(
+    @address = assign(:address, create(:address,
       :name => "MyString",
       :address1 => "MyString",
       :address2 => "MyString",
       :city => "MyString",
       :state => "MyString",
       :postal_code => "MyString",
-      :country_id => "MyString",
+      :country_id => "US",
       :latitude => "MyString",
       :longitude => "MyString"
     ))
@@ -28,7 +28,7 @@ RSpec.describe "api/v1/addresses/edit", :type => :view do
 
       assert_select "input#address_city[name=?]", "address[city]"
 
-      assert_select "input#address_state[name=?]", "address[state]"
+      assert_select "select#address_state[name=?]", "address[state]"
 
       assert_select "input#address_postal_code[name=?]", "address[postal_code]"
 

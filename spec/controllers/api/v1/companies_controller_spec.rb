@@ -80,7 +80,14 @@ RSpec.describe Api::V1::CompaniesController, :type => :controller do
         expect(assigns(:company)).to be_a(Company)
         expect(assigns(:company)).to be_persisted
       end
-
+      it "creates a new address" do
+        post :create, {:company => valid_attributes}, valid_session
+        expect(assigns(:company).address).to be_a(Address)
+        expect(assigns(:company).address).to be_persisted
+        expect(assigns(:company).address.name).to eq assigns(:company).name
+        expect(assigns(:company).address.address1).to eq 'some address'
+        expect(assigns(:company).address.city).to eq 'some city'
+      end
       it "redirects to the created company" do
         post :create, {:company => valid_attributes}, valid_session
         expect(response).to redirect_to(api_v1_company_url(Company.last))

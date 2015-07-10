@@ -7,9 +7,9 @@ RSpec.describe "api/v1/addresses/show", :type => :view do
       :address1 => "Address1",
       :address2 => "Address2",
       :city => "City",
-      :state => "State",
+      :state => "KW",
       :postal_code => "Postal Code",
-      :country_id => "Country",
+      :country_id => "CD",
       :latitude => "Latitude",
       :longitude => "Longitude"
     ))
@@ -21,9 +21,9 @@ RSpec.describe "api/v1/addresses/show", :type => :view do
     expect(rendered).to match(/Address1/)
     expect(rendered).to match(/Address2/)
     expect(rendered).to match(/City/)
-    expect(rendered).to match(/State/)
+    expect(rendered).to match(/Kasai-Occidental/)
     expect(rendered).to match(/Postal Code/)
-    expect(rendered).to match(/Country/)
+    expect(rendered).to match(/Congo, The Democratic Republic Of The/)
     expect(rendered).to match(/Latitude/)
     expect(rendered).to match(/Longitude/)
   end

@@ -18,7 +18,7 @@
           %li
             =link_to 'Projects', api_v1_projects_path
             =link_to 'Companies', api_v1_companies_path
-            =link_to 'Raw Data', rails_admin_path
+            =link_to 'Raw Data', rails_admin_path, method: :get
     =render(partial: 'shared/navbar_login')
 -if alert
   .alert.alert-danger{role: 'alert'}

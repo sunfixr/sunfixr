@@ -14,6 +14,6 @@ RSpec.describe "api/v1/companies/index", :type => :view do
 
   it "renders a list of companies" do
     render
-    assert_select "tr>td", :text => "Name".to_s, :count => 2
+    assert_select "div.admin-row", :text => "Name".to_s, :count => 2
   end
 end

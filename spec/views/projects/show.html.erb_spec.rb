@@ -22,7 +22,7 @@ RSpec.describe "projects/show", :type => :view do
   end
 
   it "should display the state" do
-    expect(rendered).to match(@project.address.state)
+    expect(rendered).to match(@project.address.state_name)
   end
 
   it "should display the country" do

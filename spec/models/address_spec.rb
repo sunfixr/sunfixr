@@ -19,7 +19,11 @@ RSpec.describe Address, :type => :model do
   end
 
   it "should return the country name" do
-    expect(address.country_name).to eq "Congo, The Democratic Republic Of The"
+    expect(address.country_name).to eq "United States"
+  end
+
+  it "should return the state name" do
+    expect(address.state_name).to eq "California"
   end
 
 end

@@ -7,9 +7,9 @@ RSpec.describe "api/v1/addresses/new", :type => :view do
       :address1 => "MyString",
       :address2 => "MyString",
       :city => "MyString",
-      :state => "MyString",
+      :state => nil,
       :postal_code => "MyString",
-      :country_id => "MyString",
+      :country_id => nil,
       :latitude => "MyString",
       :longitude => "MyString"
     ))
@@ -28,7 +28,7 @@ RSpec.describe "api/v1/addresses/new", :type => :view do
 
       assert_select "input#address_city[name=?]", "address[city]"
 
-      assert_select "input#address_state[name=?]", "address[state]"
+      assert_select "select#address_state[name=?]", "address[state]"
 
       assert_select "input#address_postal_code[name=?]", "address[postal_code]"
 
