@@ -20,7 +20,6 @@ feature "Company management", :type => :feature do
     let(:company_notes){Faker::Company.catch_phrase}
     before :each do
       click_link('New Company')
-      puts page.body
       fill_in('company_name',with: company_name)
       fill_in('company_notes',with:  company_notes)
       click_button('Save')
