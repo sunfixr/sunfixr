@@ -1,6 +1,6 @@
 var addProfilePic = function(){
     var form = $('#edit_project_1')
-    var count = form.find('div.row.fields').length
+    var count = $('.fields').length
     console.info('in addProfilePic')
     console.info($('#admin-controls').innerHtml)
     $('#admin-controls').before(
