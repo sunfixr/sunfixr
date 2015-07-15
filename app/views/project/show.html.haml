@@ -40,11 +40,20 @@
                     See full maintenance log.
               .row
                 .col-xs-12.text-center
-                  %a{:href => project_attachments_list_path(@project.slug), :class => 'btn btn-primary btn-block', id: 'attachments-link'}
-                    Project Files
-        = link_to("Delete This Project", api_v1_project_path(@project, return_to: projects_path), :data => { :confirm => 'Are you sure?' }, :method => :delete, class: 'btn btn-danger btn-block destroy_link') if can?(:destroy,@project)
-        = link_to("Manage Users", project_users_path(@project), class: 'btn btn-primary btn-block') if can?(:manage_users,@project)
-        = link_to("Edit Pictures", project_project_pics_path(@project),class: 'btn btn-primary btn-block') if can?(:manage_pictures,@project)
+                  -if can?(:manage_files,@project)
+                    %a{:href => project_attachments_path(@project.slug), :class => 'btn btn-primary btn-block', id: 'edit-attachments-link'}
+                      Edit Project Files
+                  -else
+                    %a{:href => project_attachments_list_path(@project.slug), :class => 'btn btn-primary btn-block', id: 'attachments-link'}
+                      Project Files
+        .row
+          .col-xs-12
+            = link_to("Manage Users", project_users_path(@project), class: 'btn btn-primary btn-block') if can?(:manage_users,@project)
+            = link_to("Edit Pictures", project_project_pics_path(@project),class: 'btn btn-primary btn-block') if can?(:manage_pictures,@project)
+        -if can?(:destroy,@project)
+          .row.delete-link
+            .col-xs-12
+              = link_to("Delete This Project", api_v1_project_path(@project, return_to: projects_path), :data => { :confirm => 'Are you sure?' }, :method => :delete, class: 'btn btn-danger btn-block destroy_link')
       .col-sm-8.text-center
         =render(partial: 'shared/photo_carousel')
         .map-image

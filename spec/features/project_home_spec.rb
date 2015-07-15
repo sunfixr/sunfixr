@@ -25,6 +25,17 @@ describe 'The project home page' do
       expect(page).not_to have_content('Edit Pictures')
     end
 
+    it 'should show the maintenance log button' do
+      expect(page).to have_link('See full maintenance log.')
+    end
+
+    it 'should show the Project Files link' do
+      expect(page).to have_css('#attachments-link[href="/project/' + project.slug + '/attachments/list"]')
+    end
+
+    it 'should not show the edit Files link' do
+      expect(page).not_to have_css('#edit-attachments-link[href="/project/' + project.slug + '/attachments"]')
+    end
   end
 
   describe "sunfixr" do
@@ -46,7 +57,17 @@ describe 'The project home page' do
     it "should show the edit pictures button" do
       expect(page).to have_content('Edit Pictures')
     end
+    it 'should show the maintenance log button' do
+      expect(page).to have_link('See full maintenance log.')
+    end
 
+    it 'should show the Project Files link' do
+      expect(page).to have_css('#attachments-link[href="/project/' + project.slug + '/attachments/list"]')
+    end
+
+    it 'should not show the edit Files link' do
+      expect(page).not_to have_css('#edit-attachments-link[href="/project/' + project.slug + '/attachments"]')
+    end
   end
 
   describe "project admin" do
@@ -67,6 +88,17 @@ describe 'The project home page' do
     end
     it "should show the edit pictures button" do
       expect(page).to have_content('Edit Pictures')
+    end
+    it 'should show the maintenance log button' do
+      expect(page).to have_link('See full maintenance log.')
+    end
+
+    it 'should not show the Project Files link' do
+      expect(page).not_to have_css('#attachments-link[href="/project/' + project.slug + '/attachments/list"]')
+    end
+
+    it 'should show the edit Project Files link' do
+      expect(page).to have_css('#edit-attachments-link[href="/project/' + project.slug + '/attachments"]')
     end
 
   end
@@ -95,6 +127,18 @@ describe 'The project home page' do
     it "should delete the project and return to projects page when link is clicked" do
       click_link('Delete This Project')
       expect(page).to have_content 'Current Projects'
+    end
+
+    it 'should show the maintenance log button' do
+      expect(page).to have_link('See full maintenance log.')
+    end
+
+    it 'should not show the Project Files link' do
+      expect(page).not_to have_css('#attachments-link[href="/project/' + project.slug + '/attachments/list"]')
+    end
+
+    it 'should show the edit Project Files link' do
+      expect(page).to have_css('#edit-attachments-link[href="/project/' + project.slug + '/attachments"]')
     end
   end
 

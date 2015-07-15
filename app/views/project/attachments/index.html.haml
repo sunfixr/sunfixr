@@ -2,7 +2,7 @@
   .panel-heading
     %h2.panel-title
       Project #{@project.name}'s Files
-  .panel-body
+  .panel-body.admin
     =form_for @project, url: project_path(@project.id,{return_to: project_attachments_path(@project)}), method: :patch, html: { multipart: true } do |f|
       .row.top
         .col-sm-4.text-center
@@ -29,6 +29,9 @@
           =link_to "Add a Project Attachment", '#', class: 'btn btn-primary btn-block', id: 'add_attachment_link'
         .col-sm-6
           =f.submit 'Update Project', class: 'btn btn-primary btn-block'
+      .row.admin-controls
+        .col-xs-12.text-center
+          =link_to "Back To Project", project_path(@project), class: 'btn btn-primary'
 :javascript
 
             $(document).ready(function(){
