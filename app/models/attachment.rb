@@ -10,6 +10,7 @@ class Attachment < ActiveRecord::Base
   delegate :url, :size, :path, to: :attachment
 
   alias_attribute :filename, :original_filename
+  alias_attribute :short_name, :original_filename
 
   private
 
