@@ -1,0 +1,66 @@
+.panel.panel-default
+  .panel-heading
+    %h1.panel-title
+      Project #{@project.name}
+  .panel-body
+    .row
+      .col-sm-4
+        #inner-panel.panel.panel-default
+          .panel.panel-body
+            .row
+              .col-xs-12
+                %h4
+                  = @project.address.city
+                  , #{@project.address.state_name}, #{@project.address.country_name}
+            .row
+              .col-xs-12.center-block
+                = image_tag(@project.project_pics.first ? @project.project_pics.first.picture_url(:medium, :secure => true) : 'project-img-1.png', class: 'img-responsive' )
+            .project-info
+              .row
+                .col-xs-12.project-description
+                  #{@project.description}
+              .row
+                .col-xs-12
+                  %dl
+                    %dt
+                      Year installed
+                    %dd= @project.install_date.to_s
+                    %dt
+                      Company
+                    %dd= @project.company.name
+                    %dt
+                      Parts
+                    %dd
+                      %ul
+                        - @project.components.each do |component|
+                          %li= component.name
+              .row
+                .col-xs-12.text-center
+                  %a{:href => "#", :class => 'btn btn-primary btn-block', id: 'maintenance-log-link'}
+                    See full maintenance log.
+              .row
+                .col-xs-12.text-center
+                  %a{:href => project_attachments_list_path(@project.slug), :class => 'btn btn-primary btn-block', id: 'attachments-link'}
+                    Project Files
+        = link_to("Delete This Project", api_v1_project_path(@project, return_to: projects_path), :data => { :confirm => 'Are you sure?' }, :method => :delete, class: 'btn btn-danger btn-block destroy_link') if can?(:destroy,@project)
+        = link_to("Manage Users", project_users_path(@project), class: 'btn btn-primary btn-block') if can?(:manage_users,@project)
+        = link_to("Edit Pictures", project_project_pics_path(@project),class: 'btn btn-primary btn-block') if can?(:manage_pictures,@project)
+      .col-sm-8.text-center
+        =render(partial: 'shared/photo_carousel')
+        .map-image
+          #map-canvas
+= javascript_include_tag "https://maps.googleapis.com/maps/api/js"
+:javascript
+  var map;
+  var geocoder;
+  var projectName =  "#{@project.name}"
+  var country = "#{@project.address.country_name}";
+  var city = "#{@project.address.city}";
+  var zip = "#{@project.address.postal_code}";
+  var projectPosition = new google.maps.LatLng(#{@project.address.latitude},#{@project.address.longitude})
+
+
+
+
+  $(document).ready(googleMapsInitialize)
+   // google.maps.event.addDomListener(window, 'load', googleMapsInitialize);

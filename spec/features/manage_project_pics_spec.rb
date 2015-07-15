@@ -11,9 +11,10 @@ feature "Project Picture management", :type => :feature do
     Warden.test_reset!
    # delete_pictures
   end
+
   describe "an unauthorized user" do
     it "should restrict access tp project pictures" do
-      visit '/projects/1/project_pics'
+      visit '/project/1/project_pics'
       expect(find('div.alert-danger')).to have_text('You are not authorized to manage project pictures.')
     end
   end
@@ -23,7 +24,7 @@ feature "Project Picture management", :type => :feature do
       user.users_projects << users_project
       allow(user).to receive(:sunfixr?).and_return(true)
       login_as(user, :scope => :user)
-      visit '/projects/1/project_pics'
+      visit '/project/1/project_pics'
     end
 
     it "should  display the 'remove' link for each project_pic" do
@@ -54,7 +55,7 @@ feature "Project Picture management", :type => :feature do
     let(:users_project) { create(:users_project, user_id: user.id, project_id: project.id, role: 'sunifixr') }
     before :each do
       login_user
-      visit '/projects/1/project_pics'
+      visit '/project/1/project_pics'
     end
     it "should change the contents of the project_pic Notes" do
       fill_in('project_project_pics_attributes_0_notes',{with: 'New Text'})
@@ -66,7 +67,7 @@ feature "Project Picture management", :type => :feature do
   describe "new project pic", :js => true do
     before :each do
       login_user
-      visit '/projects/1/project_pics'
+      visit '/project/1/project_pics'
       click_link("Add a Project Pic")
     end
     it "should add a new field for upload" do

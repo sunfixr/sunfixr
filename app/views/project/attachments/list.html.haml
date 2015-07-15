@@ -1,0 +1,19 @@
+.panel.panel-default
+  .panel-heading
+    %h2.panel-title
+      Project #{@project.name}'s Files
+  .panel-body.admin
+    .row.top
+      .col-sm-6.text-center
+        %strong
+          Notes
+      .col-sm-6.text-center
+        %strong
+          Link
+    - @project.attachments.each do |attachment|
+      .row.admin-row
+        .col-sm-6.text-center
+          .well.well-sm
+            =attachment.notes
+        .col-sm-6.text-center
+          =link_to 'Get ' + attachment.filename,attachment.attachment_url(:secure => true), class: 'btn btn-primary btn-block file-link'

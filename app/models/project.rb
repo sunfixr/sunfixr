@@ -16,15 +16,16 @@ class Project < ActiveRecord::Base
 
   accepts_nested_attributes_for :address, allow_destroy: true
   accepts_nested_attributes_for :project_pics, allow_destroy: true
+  accepts_nested_attributes_for :users, allow_destroy: true
   accepts_nested_attributes_for :users_projects, allow_destroy: true
-  accepts_nested_attributes_for :users_projects, allow_destroy: true
+  accepts_nested_attributes_for :attachments, allow_destroy: true
   before_validation :set_address_name, :slugify
 
 
-  def self.build
-    installation = self.new
-    installation.components_installation.build
-  end
+#  def self.build
+##    installation = self.new
+#    installation.components_installation.build
+#  end
 
 
   def company_id

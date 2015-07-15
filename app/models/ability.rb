@@ -13,6 +13,9 @@ class Ability
        can [:manage_pictures], Project do |project|
          user.sunfixr?(project.id) || user.project_admin?(project.id)
        end
+       can [:manage_files], Project do |project|
+         user.sunfixr?(project.id) || user.project_admin?(project.id)
+       end
        can [:manage_users], Project do |project|
          user.project_admin?(project.id)
        end

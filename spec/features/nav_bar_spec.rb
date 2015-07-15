@@ -10,7 +10,7 @@ feature "Top Navigation Bar", :type => :feature do
 
   describe "un-logged on user" do
     before :each do
-      visit '/projects/foo'
+      visit '/project/foo'
       @navbar = find('#navbar')
     end
 
@@ -44,7 +44,7 @@ feature "Top Navigation Bar", :type => :feature do
       project.reload
       allow(user).to receive(:sunfixr?).and_return(true)
       login_as(user, :scope => :user)
-      visit '/projects/foo'
+      visit '/project/foo'
       @navbar = find('#navbar')
     end
     it "should not have a link to the admin page" do
@@ -72,7 +72,7 @@ feature "Top Navigation Bar", :type => :feature do
       project.reload
       allow(user).to receive(:project_admin?).and_return(true)
       login_as(user, :scope => :user)
-      visit '/projects/foo'
+      visit '/project/foo'
       @navbar = find('#navbar')
     end
     it "should not have a link to the admin page" do
@@ -97,7 +97,7 @@ feature "Top Navigation Bar", :type => :feature do
     before :each do
       allow(user).to receive(:admin?).and_return(true)
       login_as(user, :scope => :user)
-      visit '/projects/foo'
+      visit '/project/foo'
       @navbar = find('#navbar')
       @dropdown = @navbar.find('.navbar-nav>li.dropdown')
     end
@@ -134,7 +134,7 @@ feature "Top Navigation Bar", :type => :feature do
   describe "logged in but not a member" do
     before :each do
       login_as(user, :scope => :user)
-      visit '/projects/foo'
+      visit '/project/foo'
       @navbar = find('#navbar')
     end
 

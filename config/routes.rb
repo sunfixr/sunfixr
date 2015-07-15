@@ -16,12 +16,15 @@ Rails.application.routes.draw do
     resources :companies
     resources :projects
    end
-  end
+ end
 
-  resources :projects, only: [:index, :show, :update] do
-    resources :project_pics, only: [:index, :destroy, :show]
-    resources :users, only: [:index, :destroy, :show]
-    post 'users/invite(.:format)', to: 'users#invite', as: 'invite_new_user'
+
+  resources :project, only: [:index, :show, :update] do
+    resources :project_pics, only: [:index, :destroy, :show], controller: 'project/project_pics'
+    resources :attachments, only: [:index, :destroy], controller: 'project/attachments'
+    resources :users, only: [:index, :destroy, :show], controller: 'project/users'
+    get '/attachments/list', to: 'project/attachments#list', as: 'attachments_list'
+    post 'users/invite(.:format)', to: 'project/users#invite', as: 'invite_new_user'
   end
 
 
@@ -29,8 +32,7 @@ Rails.application.routes.draw do
   root 'home#index', as: :root
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get '/home' => 'home#index', as: :home_index
-  get 'training' => 'training#index', as: 'training'
-  get 'manuals' => 'manuals#index', as: 'manuals'
-
   get 'mon' => 'mon#index', as: 'mon'
+
+  get 'projects' => 'project#index', as: 'projects'
 end

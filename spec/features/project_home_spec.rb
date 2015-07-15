@@ -9,7 +9,7 @@ describe 'The project home page' do
 
   describe "un-logged on user" do
     before :each do
-      visit '/projects/foo'
+      visit '/project/foo'
     end
 
     it 'should display the project information' do
@@ -35,7 +35,7 @@ describe 'The project home page' do
       project.reload
       allow(user).to receive(:sunfixr?).and_return(true)
       login_as(user, :scope => :user)
-      visit '/projects/foo'
+      visit '/project/foo'
     end
     it "should not show the delete button" do
       expect(page).not_to have_content('Delete This Project')
@@ -57,7 +57,7 @@ describe 'The project home page' do
       project.reload
       allow(user).to receive(:project_admin?).and_return(true)
       login_as(user, :scope => :user)
-      visit '/projects/foo'
+      visit '/project/foo'
     end
     it "should not show the delete button" do
       expect(page).not_to have_content('Delete This Project')
@@ -76,7 +76,7 @@ describe 'The project home page' do
     before :each do
       allow(user).to receive(:admin?).and_return(true)
       login_as(user, :scope => :user)
-      visit '/projects/foo'
+      visit '/project/foo'
     end
     it "should show the delete button" do
       expect(page).to have_content('Delete This Project')
@@ -101,7 +101,7 @@ describe 'The project home page' do
   describe "not a member" do
     before :each do
       login_as(user, :scope => :user)
-      visit '/projects/foo'
+      visit '/project/foo'
     end
     it "should not show the delete button" do
       expect(page).not_to have_content('Delete This Project')

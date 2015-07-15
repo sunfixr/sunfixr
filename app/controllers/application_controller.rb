@@ -20,4 +20,8 @@ class ApplicationController < ActionController::Base
     !Rails.env.development? && !params[:controller]=='mon'
   end
 
+  def get_project
+    @project = params[:project_id].match(/^[0-9]*$/) ? Project.find(params[:project_id]) : Project.find_by_slug(params[:project_id].downcase)
+  end
+
 end
