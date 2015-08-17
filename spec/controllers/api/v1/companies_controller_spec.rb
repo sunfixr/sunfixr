@@ -50,6 +50,11 @@ RSpec.describe Api::V1::CompaniesController, :type => :controller do
       get :show, {:id => company.to_param}, valid_session
       expect(assigns(:company)).to eq(company)
     end
+
+    it "displays a 404 if company is not found" do
+      get :show, {:id => '2001'}, valid_session
+      expect(response).to have_http_status(:not_found)
+    end
   end
 
   describe "GET new" do

@@ -4,8 +4,8 @@ RSpec.describe User, :type => :model do
   let(:user_admin){create(:user, role: 'admin')}
   let(:user_sunfixr){create(:user, email: 'sunfixr@gmail.com')}
   let(:project){create(:project, name: 'Project x')}
-  describe "roles" do
 
+  describe "roles" do
     it "should know if user is an admin" do
       expect(user_admin.admin?).to be_truthy
     end

@@ -15,7 +15,7 @@ RSpec.describe Project::ProjectPicsController, :type => :controller do
 
   describe 'Index' do
     it "should find and assign the project when given an ID" do
-      allow(Project).to receive(:find).with('1').and_return(project)
+      allow(Project).to receive(:find_by_id).with('1').and_return(project)
       get :index, project_id: '1'
       expect(assigns(:project)).to be project
     end
@@ -29,6 +29,12 @@ RSpec.describe Project::ProjectPicsController, :type => :controller do
       allow(Project).to receive(:find_by_slug).with('ditunga').and_return(project)
       get :index, project_id: 'ditunga'
       expect(response).to redirect_to(project_path(project.id))
+    end
+
+    it "should send a 404 error if project not found" do
+      allow(Project).to receive(:find_by_slug).with('bogus').and_return(nil)
+      get :index, project_id: 'bogus'
+      expect(response).to have_http_status(:not_found)
     end
   end
 

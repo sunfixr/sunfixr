@@ -72,7 +72,13 @@ class Api::V1::ProjectsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_project
       @project = Project.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      respond_to do |format|
+        format.html { render :file => "#{Rails.root}/public/404.html", layout: false,  :status => 404 }
+        format.json { render json: {error: 'project not found.'}, status: :not_found }
+      end
     end
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
@@ -81,7 +87,8 @@ class Api::V1::ProjectsController < ApplicationController
           :component_attributes => [:id,:name,:description,:company_id,:serial_number,:part_number],
           :company_attributes => [:id,:name],
           :address_attributes => [:id,:addressable_id,:addressable_type,:name,:address1,:address2,:city,:state,:postal_code,:country_id,:latitude,:longitude],
-          :profile => [:profile, :profile_id, :profile_type]
+          :profile => [:profile, :profile_id, :profile_type],
+          :attachments_attributes => [:id, :attachment, :attachment_cache, :notes]
       )
     end
 end

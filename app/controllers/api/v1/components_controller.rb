@@ -66,10 +66,18 @@ class Api::V1::ComponentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_component
       @component = Component.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      respond_to do |format|
+        format.html { render :file => "#{Rails.root}/public/404.html", layout: false,  :status => 404 }
+        format.json { render json: {error: 'component not found.'}, status: :not_found }
+      end
     end
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def component_params
-      params.require(:component).permit(:name, :company_id, :part_number, :serial_number)
+      params.require(:component).permit(:name, :company_id, :part_number, :serial_number, :description, :comments,
+                                        attachments_attributes: [:id, :attachment, :attachment_cache, :notes]
+      )
     end
 end

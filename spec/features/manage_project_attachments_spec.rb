@@ -38,12 +38,12 @@ feature "Project File management", :type => :feature  do
     feature 'delete attachment' do
       it "should delete an attachment" do
         expect{
-          find('a.destroy_link[href="/project/' + project.slug + '/attachments/' + project.attachments[1].id.to_s + '"]').click
+          find('a.destroy_link[href="/api/v1/attachments/' + project.attachments[1].id.to_s + '?return_to=%2Fproject%2F' + project.id.to_s + '%2Fattachments"]').click
         }.to change{project.attachments.count}.by(-1)
       end
     end
 
-    feature "add Attachemnts", :js => true do
+    feature "add Attachments", :js => true do
 
       def login_user
         visit '/user/sign_in'
@@ -56,7 +56,7 @@ feature "Project File management", :type => :feature  do
       before :each do
         @myproject = create(:project_with_attachments, id: 2)
         login_user
-        allow(Project).to receive(:find).and_return(@myproject)
+        allow(Project).to receive(:find_by_id).and_return(@myproject)
         visit '/project/2/attachments'
       end
       it "should add a new project attachment to the list" do

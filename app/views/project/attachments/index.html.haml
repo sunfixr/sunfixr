@@ -1,39 +1,13 @@
 .panel.panel-default
   .panel-heading
     %h2.panel-title
-      Project #{@project.name}'s Files
+      Project #{@project.name}
   .panel-body.admin
     =form_for @project, url: project_path(@project.id,{return_to: project_attachments_path(@project)}), method: :patch, html: { multipart: true } do |f|
-      .row.top
-        .col-sm-4.text-center
-          %strong
-            Notes
-        .col-sm-4.text-center
-          %strong
-            Link
-        .col-sm-4
-          &nbsp;
-      - @project.attachments.each do |attachment|
-        =f.fields_for :attachments, attachment do |p|
-          .panel.panel-default
-            .panel-body
-              .row.fields
-                .col-sm-4.text-center
-                  =p.text_area :notes, cols: '25', rows: '3'
-                .col-sm-4.text-center
-                  =link_to attachment.filename,attachment.attachment_url(:secure => true)
-                .col-sm-4.text-center
-                  =link_to('Destroy', project_attachment_path(@project.slug,attachment.id), method: :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-primary btn-block destroy_link')
-      #admin-controls.row
-        .col-sm-6
-          =link_to "Add a Project Attachment", '#', class: 'btn btn-primary btn-block', id: 'add_attachment_link'
-        .col-sm-6
-          =f.submit 'Update Project', class: 'btn btn-primary btn-block'
+      = render :partial => 'shared/attachments_form', locals: {f: f,attachment_destroy_return_to: project_attachments_path(@project)}
+      .row.admin-controls
+        .col-xs-12.text-center
+          =f.submit(class: 'btn btn-primary form-control')
       .row.admin-controls
         .col-xs-12.text-center
           =link_to "Back To Project", project_path(@project), class: 'btn btn-primary'
-:javascript
-
-            $(document).ready(function(){
-              $('#add_attachment_link').click(addProjectAttachment)
-            });

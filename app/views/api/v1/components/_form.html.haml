@@ -1,4 +1,4 @@
-= form_for @component, url: @component.id ? api_v1_component_path(@component, return_to: params[:return_to]) : api_v1_components_path(return_to: params[:return_to]) do |f|
+= form_for @component, url: @component.id ? api_v1_component_path(@component, return_to: params[:return_to]) : api_v1_components_path(return_to: params[:return_to]), html: { multipart: true } do |f|
   - if @component.errors.any?
     #error_explanation
       %h2= "#{pluralize(@component.errors.count, "error")} prohibited this component from being saved:"
@@ -6,6 +6,6 @@
         - @component.errors.full_messages.each do |msg|
           %li= msg
 
-  =render partial: 'api/v1/components/fields', locals: {f: f}
+  =render partial: 'api/v1/components/fields', locals: {f: f,attachment_destroy_return_to:  @component.id ? edit_api_v1_component_path(@component, return_to: params[:return_to]) : nil}
   .form-group
     =f.submit(class: 'btn btn-primary form-control')

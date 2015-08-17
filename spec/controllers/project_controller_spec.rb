@@ -17,6 +17,34 @@ RSpec.describe ProjectController, :type => :controller do
       expect(response).to render_template(:index)
     end
 
+    it "should render the index view" do
+      allow(Project).to receive(:all).and_return([])
+      get :index
+      expect(response).to render_template(:index)
+    end
+
+  end
+
+  describe "home" do
+
+    it "should show a project" do
+      expect(Project).to receive(:find_by_id).and_return(project)
+      get :show, id: '1'
+      expect(response).to render_template(:show)
+    end
+
+    it "should find a project by its slug" do
+      expect(Project).to receive(:find_by_slug).with('slug').and_return(project)
+      get :show, id: 'slug'
+      expect(response).to render_template(:show)
+    end
+
+    it "should render a 404 if project not found" do
+      expect(Project).to receive(:find_by_slug).with('bogus_slug').and_return(nil)
+      get :show, id: 'bogus_slug'
+      expect(response).to have_http_status(:not_found)
+    end
+
   end
 
   describe "update" do
@@ -41,7 +69,7 @@ RSpec.describe ProjectController, :type => :controller do
       let(:project){ create :project_with_users, :with_company}
       let(:params){ project.attributes.merge({'users_attributes' => project.users.collect{|pic|pic.attributes}}) }
       before :each do
-        allow(Project).to receive(:find).and_return(project)
+        allow(Project).to receive(:find_by_id).and_return(project)
       end
 
       it "should update the project user roles in bulk" do
@@ -55,7 +83,7 @@ RSpec.describe ProjectController, :type => :controller do
       let(:project){ create :project_with_attachments }
       let(:params){ project.attributes.merge({'attachments_attributes' => project.attachments.collect{|pic|pic.attributes}}) }
       before :each do
-        allow(Project).to receive(:find).and_return(project)
+        allow(Project).to receive(:find_by_id).and_return(project)
       end
       it "should update the project pictures notes in bulk" do
         params['attachments_attributes'][0]['notes'] = 'Hello'
@@ -73,12 +101,12 @@ RSpec.describe ProjectController, :type => :controller do
 
   describe "show" do
     it "should find the project" do
-      expect(Project).to receive(:find).with(project.id.to_s).and_return(project)
+      expect(Project).to receive(:find_by_id).with(project.id.to_s).and_return(project)
       get :show, id: project.id
     end
     describe "response" do
       before :each do
-        allow(Project).to receive(:find).with(project.id.to_s).and_return(project)
+        allow(Project).to receive(:find_by_id).with(project.id.to_s).and_return(project)
         get :show, id: project.id
       end
       it "should assign 'project' " do

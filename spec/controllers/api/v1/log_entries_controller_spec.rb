@@ -51,6 +51,11 @@ RSpec.describe Api::V1::LogEntriesController, :type => :controller do
       get :show, {:id => log_entry.to_param}, valid_session
       expect(assigns(:log_entry)).to eq(log_entry)
     end
+
+    it "returns a 404 if log_entry is not found" do
+      get :show, {:id => '2001'}, valid_session
+      expect(response).to have_http_status(:not_found)
+    end
   end
 
   describe "GET new" do

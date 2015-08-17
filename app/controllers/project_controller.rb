@@ -29,7 +29,5 @@ class ProjectController < ApplicationController
         attachments_attributes: [:id, :attachment, :attachment_cache, :notes]
     )
   end
-  def get_project
-    @project = params[:id].match(/^[0-9]*$/) ? Project.find(params[:id]) : Project.find_by_slug(params[:id].downcase)
-  end
+
 end

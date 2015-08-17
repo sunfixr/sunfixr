@@ -10,3 +10,4 @@
 .form-group
   = f.label :serial_number
   = f.text_field :serial_number, class: 'form-control'
+= render :partial => 'shared/attachments_form', locals: {f: f,attachment_destroy_return_to: attachment_destroy_return_to}

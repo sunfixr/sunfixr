@@ -5,7 +5,7 @@ feature "Project Picture management", :type => :feature do
   let(:users_project) { create(:users_project, user_id: user.id, project_id: project.id, role: 'sunifixr') }
 
   before :each do
-    allow(Project).to receive(:find).and_return(project)
+    allow(Project).to receive(:find_by_id).and_return(project)
   end
   after :each do
     Warden.test_reset!

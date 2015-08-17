@@ -6,7 +6,7 @@ feature "Project User management", :type => :feature do
  # let(:users_project) { create(:users_project, user_id: user.id, project_id: project.id, role: 'sunifixr') }
 
   before :each do
-    allow(Project).to receive(:find).and_return(project)
+    allow(Project).to receive(:find_by_id).and_return(project)
     project.users_projects[0].role = 'admin'
     project.users_projects[1].role = 'sunfixr'
   end

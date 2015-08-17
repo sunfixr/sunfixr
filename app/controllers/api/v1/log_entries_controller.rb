@@ -65,6 +65,11 @@ class Api::V1::LogEntriesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_log_entry
       @log_entry = LogEntry.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      respond_to do |format|
+        format.html { render :file => "#{Rails.root}/public/404.html", layout: false,  :status => 404 }
+        format.json { render json: {error: 'Log Entry not found.'}, status: :not_found }
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -21,7 +21,9 @@ class ApplicationController < ActionController::Base
   end
 
   def get_project
-    @project = params[:project_id].match(/^[0-9]*$/) ? Project.find(params[:project_id]) : Project.find_by_slug(params[:project_id].downcase)
+    project_id = params[:project_id] || params[:id]
+    @project = project_id.match(/^[0-9]*$/) ? Project.find_by_id(project_id) : Project.find_by_slug(project_id.downcase)
+    render :file => "#{Rails.root}/public/404.html", layout: false,  :status => 404 unless @project
   end
 
 end

@@ -66,6 +66,10 @@ class Api::V1::CompaniesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_company
       @company = Company.where('id=?', params[:id]).includes(:components).first
+      respond_to do |format|
+        format.html { render :file => "#{Rails.root}/public/404.html", layout: false,  :status => 404 }
+        format.json { render json: {error: 'address not found.'}, status: :not_found }
+      end unless @company
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -73,6 +77,7 @@ class Api::V1::CompaniesController < ApplicationController
       params.require(:company).permit(
           :name, :notes,
           :address_attributes => [:id,:addressable_id,:addressable_type,:name,:address1,:address2,:city,:state,:postal_code,:country_id,:latitude,:longitude]
+
       )
     end
 end

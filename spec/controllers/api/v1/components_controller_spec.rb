@@ -50,6 +50,11 @@ RSpec.describe Api::V1::ComponentsController, :type => :controller do
       get :show, {:id => component.to_param}, valid_session
       expect(assigns(:component)).to eq(component)
     end
+
+    it "returns a 404 if component is not found" do
+      get :show, {id: '2001'}, valid_session
+      expect(response).to have_http_status(:not_found)
+    end
   end
 
   describe "GET new" do

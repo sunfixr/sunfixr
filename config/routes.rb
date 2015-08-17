@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :components
     resources :companies
     resources :projects
+    resources :attachments, only: [:update,:destroy,:create,:show]
    end
  end
 
