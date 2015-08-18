@@ -15,3 +15,4 @@ This project was born out of a solar industry "Hackathon" held at sFunCube in Oa
 * [http://challengepost.com/software/sunfixr-so1ig](http://challengepost.com/software/sunfixr-so1ig)
 * [Slide Deck](https://docs.google.com/presentation/d/1HML45pT7ZrERmR6zu6eGNqKPr56ma8VUIqij16JtSO0/edit#slide=id.p)
 * [Presentation Video](https://www.stringwire.com/profile/yNCxd/watch/X2t0tF)
+* 
